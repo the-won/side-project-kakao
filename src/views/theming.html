@@ -93,20 +93,70 @@
 
 
 	
-	const obj = {
-		id: "2020-11-02-11:56:29",
-		teamName: "ICT개발2팀",
-		title: "파이썬",
-		managerTel: "010-2828-7777",
-		start: "2020-11-02",
-		end: "2020-11-05"
-	}
-	var newData = JSON.stringify(obj);
+	// const obj = {
+	// 	id: "2020-11-02-11:56:29",
+	// 	teamName: "ICT개발2팀",
+	// 	title: "파이썬",
+	// 	managerTel: "010-2828-7777",
+	// 	start: "2020-11-02",
+	// 	end: "2020-11-05"
+	// }
+	//var newData = JSON.stringify(obj);
 
-	function saveStorage(){
+	$.fn.serializeObject = function() {
+		var result = {}
+
+		var extend = function(i, element) {
+			var node = result[element.name]
+			if ("undefined" !== typeof node && node !== null) {
+				if ($.isArray(node)) {
+					node.push(element.value)
+				} else {
+					result[element.name] = [node, element.value]
+				}
+			} else {
+				result[element.name] = element.value
+			}
+		}
+
+		$.each(this.serializeArray(), extend)
+		return result
+	}
+
+	 /**
+     * @method  format()
+     * @param { date }
+     * @returns { String }
+     * @description new Date()를 인자로 받고 YYYY-MM-DD-HH-mm-ss 형식의 포맷을 리턴해주는 함수 
+     */
+	function format(date){
+
+		
+		return YYYY-MM-DD-HH-mm-ss;
+	}
+
+	function updateItem(){
+		
+		var serializeObject = $('#form1').serializeObject();
+		console.log(serializeObject)
+		var obj = new Object();
+
+		var period = format(new Date());
+		obj.id = period;
+		obj.teamName = serializeObject.teamName;
+		obj.title = serializeObject.title;
+		obj.managerTel = serializeObject.managerTel;;
+		obj.start = null;
+		obj.end = null;
+
+		var newData = JSON.stringify(obj);
+
 		$.ajax({
-			url: 'https://day-01.firebaseio.com/items2/2020-11-02-11:56:29.json', // 서버에 전달할 파일명
+			url: `https://day-01.firebaseio.com/items2/${obj.id}.json`, // 서버에 전달할 파일명
 			dataType: 'text',
+			cache : false,
+			processData: false,
+            contentType: false,
 			type: 'PUT',
 			data: newData,
 			success: function() {
@@ -123,10 +173,10 @@
 
 
 
-		$('#saveBtn').on('click', function(e){
-			e.preventDefault();
-			saveStorage();
-		})
+		// $('#saveBtn').on('click', function(e){
+		// 	e.preventDefault();
+		// 	updateItem();
+		// })
 	});
 
 
@@ -240,6 +290,17 @@
 	<div id='calendar'></div>
 
 	<!-- 저장 -->
-	<button type="button" id="saveBtn">save</button>
+	<form id="form1" name="form1" method="post">
+		<input type="text" name="title">
+		<input type="tel" name="tel">
+		<select name="teamName" id="">
+			<option value="ICT개발1팀">ICT개발1팀</option>
+			<option value="ICT개발2팀">ICT개발2팀</option>
+			<option value="ICT개발3팀">ICT개발3팀</option>
+			<option value="ICT개발4팀">ICT개발4팀</option>
+		</select>
+		<button type="button" id="saveBtn" onclick="updateItem(); return false;">save</button>
+	</form>
+	
 </body>
 </html>
