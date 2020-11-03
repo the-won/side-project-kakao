@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <title>Schedule</title>
+    <link rel="stylesheet" href="../assets/css/jquery-ui.min.css">    
+    <link rel="stylesheet" href="../assets/css/contents.css">    
+    <script src="../assets/js/jquery-3.2.1.min.js"></script>
+    <script src="../assets/js/jquery-ui.min.js"></script>
+    <script src="../assets/js/fullcalendar.js"></script>
+
+</head>
+<body class="app-wrap main">
+	<div class="wrapper">
+		<header id="incSub2Header" class="sub2-header albaManage">
+			<!-- include 영역 S -->
+			<div class="inner">
+				<h1 class="home">
+					탕비실 청소 담당자
+				</h1>
+			</div>
+			<!-- include 영역 E -->
+		</header>
+
+		<div class="app-content sub albaManagement">
+			<div class="contents-wrap">
+				<div class="schedule-calendar">
+					<div class="cnt-box">
+						<!-- 날짜 이전/다음 -->
+						<div class="date-pn-wrap">
+							<button type="button" class="btn-date prev">이전</button>
+							<div class="inp-cal">
+								<span class="date"><span class="year"><i></i>년</span> <span class="month"><i></i>월</span></span>
+								<input type="text" name="" class="cal" value="" readonly/>
+							</div>
+							<button type="button" class="btn-date next">다음</button>
+						</div>
+						<!-- // 날짜 이전/다음 -->
+					</div>	
+					
+					<div id="calendar"></div>
+	
+					<div class="cnt-box calendar-wrap">
+						<div class="calendar-in-page"></div>
+					</div>
+				</div>
+			</div>
+			<div class="checkup-wrap">
+				<img src="../assets/images/checkup.png" alt="check!" class="ico-checkup">
+				<p class="tit">여름에는 정수기 입구를 <b>꼭!</b> 깨끗하게 유지 해주세요!</p>
+			</div>
+			<div class="btn-float">
+				<a href="#" onclick="floating(); return false;"><img src="../assets/images/btn_plus.png" alt="메뉴"></a>
+				<ul class="menu-wrap">
+					<li class="albaAdd"><a href="#" class="modal" data-modal="modal-albaAdd">담당자<br>등록</a></li>
+					<li class="scheduleAdd"><a href="#">메뉴<br>메뉴</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	
+	<!-- Modal 담당자 등록  -->
+	<div class="layer-pop-wrap default" data-modal-call="modal-albaAdd">
+		<div class="dimmed-layer noAction on"></div>
+		<div class="layer-pop-inner-wrap">
+			<div class="m-title">담당자 등록
+				<a href="javascript:void(0)" class="btn-modal-closed layer-close-button">
+					<img src="../assets/images/icon-close-03.png" alt="닫기">
+				</a>
+			</div>
+	
+			<div class="m-contents">
+				<article class="default-section">
+					<div class="app-content sub schedule">
+						<div class="content">
+							<div class="input-label-group">
+								<label class="title" for="team">팀명</label>
+									<select id="team">
+										<option>ICT 개발 1팀</option>
+										<option>ICT 개발 2팀</option>
+										<option>ICT 개발 3팀</option>
+										<option>ICT 개발 4팀</option>
+									</select>
+							</div>
+
+							<div class="input-label-group">
+								<label class="title" for="name">이름</label>
+								<div class="interval-default nameWrap">
+									<button class="btn-color modal" data-modal="modal-color"><i class="name v-1">컬러 선택</i></button>
+									<input type="text" id="name" placeholder="홍길동">
+								</div>
+							</div>
+		
+							<div class="input-label-group">
+								<label class="title" for="cellphone">휴대폰</label>
+								<div class="interval-default">
+									<input type="number" pattern="[0-9]*" id="cellphone" placeholder="숫자만 입력하세요" style="width:208px">
+								</div>
+							</div>
+		
+							<div class="input-label-group input-button-group calWrap">
+								<label class="title">시작일</label>
+								<div class="interval-default calendar">
+									<input type="text" id="calendar_01" class="datepicker input-full" readonly>
+									<a href="javascript:void(0);" class="btn-calendar-add">달력</a>
+								</div>
+							</div>
+		
+							<div class="input-label-group input-button-group calWrap">
+								<label class="title">종료일</label>
+								<div class="interval-default calendar">
+									<input type="text" id="calendar_02" class="datepicker input-full" readonly>
+									<a href="javascript:void(0);" class="btn-calendar-add">달력</a>
+								</div>
+							</div>
+		
+							<div class="input-label-group">
+								<label class="title" for="memo">메모</label>
+								<div class="interval-default">
+									<textarea id="memo" placeholder="한글기준, 띄어쓰기 포함 최대 1,000자까지 입력 가능합니다."></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="fixed-area">
+							<div class="btn-area separate-02 nopd">
+								<a href="javascript:void(0);" class="btn btn-primary" id="btnCancel">삭제</a>
+								<a href="javascript:void(0);" class="btn btn-mint2" id="btnSave">저장하기</a>
+							</div>
+						</div>
+					</div>
+				</article>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal 컬러 선택 -->
+	<div class="layer-pop-wrap default color" data-modal-call="modal-color">
+		<div class="dimmed-layer noAction on"></div>
+		<div class="layer-pop-inner-wrap">
+			<div class="m-title">컬러를 선택하세요
+				<a href="javascript:void(0)" class="btn-modal-closed layer-close-button">
+					<img src="../assets/images/icon-close-03.png" alt="닫기">
+				</a>
+			</div>
+	
+			<div class="m-contents">
+				<div class="content nameWrap">
+					<span class="btn-color"><input type="radio" name="colorCheck" id="v-1" checked><label for="v-1"><i class="name v-1">컬러 선택</i></label></span>
+					<span class="btn-color"><input type="radio" name="colorCheck" id="v-2"><label for="v-2"><i class="name v-2">컬러 선택</i></label></span>
+					<span class="btn-color"><input type="radio" name="colorCheck" id="v-3"><label for="v-3"><i class="name v-3">컬러 선택</i></label></span>
+					<span class="btn-color"><input type="radio" name="colorCheck" id="v-4"><label for="v-4"><i class="name v-4">컬러 선택</i></label></span>
+					<span class="btn-color"><input type="radio" name="colorCheck" id="v-5"><label for="v-5"><i class="name v-5">컬러 선택</i></label></span>
+					<span class="btn-color"><input type="radio" name="colorCheck" id="v-6"><label for="v-6"><i class="name v-6">컬러 선택</i></label></span>
+					<span class="btn-color"><input type="radio" name="colorCheck" id="v-7"><label for="v-7"><i class="name v-7">컬러 선택</i></label></span>
+					<span class="btn-color"><input type="radio" name="colorCheck" id="v-8"><label for="v-8"><i class="name v-8">컬러 선택</i></label></span>
+					<span class="btn-color"><input type="radio" name="colorCheck" id="v-9"><label for="v-9"><i class="name v-9">컬러 선택</i></label></span>
+					<span class="btn-color"><input type="radio" name="colorCheck" id="v-10"><label for="v-10"><i class="name v-10">컬러 선택</i></label></span>
+					<span class="btn-color"><input type="radio" name="colorCheck" id="v-11"><label for="v-11"><i class="name v-11">컬러 선택</i></label></span>
+					<span class="btn-color"><input type="radio" name="colorCheck" id="v-12"><label for="v-12"><i class="name v-12">컬러 선택</i></label></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../assets/js/script.js"></script>
+
+	<script>
+	
+	</script>
+</body>
+</html>

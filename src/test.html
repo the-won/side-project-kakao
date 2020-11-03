@@ -8,38 +8,14 @@
 </head>
 <body>
     <h1>Test</h1>
-    
+    <button type="button" id="saveBtn">save</button>
+
+    <div id="result">
+
+    </div>
 
     <script>
-        $(document).ready(function(){
-
-           
-    
-
-        })
-
-        var date = new Date();
-        console.log(date.getMonth() +1)
-        var url = document.location.href;
-        
-
-        $.ajax({
-            url: 'https://day-01.firebaseio.com/items.json',
-            type: 'GET',
-            success: (data, textStatus, jqXHR) => {
-                console.log('success');
-                //alert('success')
-                console.log(data);
-                //alert('data')
-                console.log(textStatus);
-                console.log(jqXHR);
-            }
-        })
-
-
-        const items = new Array();
-
-        const obj = {
+       const obj = {
             id: "00000",
             teamName: "ICT개발1팀",
             managerName: "홍길동",
@@ -47,6 +23,70 @@
             startDate: "2020-11-12",
             endDate: "2020-11-15"
         }
+
+        $('#saveBtn').on('click', function(e){
+            e.preventDefault();
+
+            saveStorage();
+            loadStorage()
+        })
+
+        var newData = JSON.stringify(obj);
+
+        function saveStorage(){
+            $.ajax({
+                url: 'https://day-01.firebaseio.com/items/2019-06-01-20:33:23.json', // 서버에 전달할 파일명
+                dataType: 'text',
+                type: 'PUT',
+                data: newData,
+                success: function() {
+                    console.log('save success'); // 성공시 코드
+                }
+            });
+        }
+
+        var date = new Date();
+        console.log(date.getMonth() +1)
+        var url = document.location.href;
+
+
+        var storageUrl = 'https://day-01.firebaseio.com/items.json';
+        var reqUrl = 'https://day-01.firebaseio.com/items.json?orderBy="$key"&startAt="2019-06"&endAt="2019-07"';
+
+        function loadStorage(){
+            $.ajax({
+                url: reqUrl,
+                type: 'GET',
+                success: (data, textStatus, jqXHR) => {
+                    console.log('load success');
+                    console.log(data);
+                    displayItems(data);
+                }
+            })
+        }
+        loadStorage();
+
+        function displayItems(data){
+            console.log(data.length)
+            let result_map = Object.keys(data).map(function (key) { 
+                //return [String(key), data[key]]; 
+                return data[key]; 
+            }); 
+            console.log(JSON.stringify(result_map))
+            
+
+            // 출력확인
+            for(let i = 0; i < result_map.length; i++) { 
+                for(let j = 0; j < result_map[i].length; j++) {
+
+                    console.log(result_map[i][j].teamName)
+                    console.log()
+                    
+                } 
+                // document.write("</br>"); 
+            } 
+        }
+
 
     </script>
 </body>
