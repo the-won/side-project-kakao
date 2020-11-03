@@ -15,13 +15,13 @@
     </div>
 
     <script>
-       const obj = {
-            id: "00000",
+        const obj = {
+            id: "2019-11-06-14:56:29",
             teamName: "ICT개발1팀",
-            managerName: "홍길동",
+            title: "아이유",
             managerTel: "010-2828-7777",
-            startDate: "2020-11-12",
-            endDate: "2020-11-15"
+            start: "2019-11-09",
+            end: "2019-11-11"
         }
 
         $('#saveBtn').on('click', function(e){
@@ -35,7 +35,7 @@
 
         function saveStorage(){
             $.ajax({
-                url: 'https://day-01.firebaseio.com/items/2019-06-01-20:33:23.json', // 서버에 전달할 파일명
+                url: 'https://day-01.firebaseio.com/items2/2019-11-09-14:56:29.json', // 서버에 전달할 파일명
                 dataType: 'text',
                 type: 'PUT',
                 data: newData,
@@ -50,12 +50,12 @@
         var url = document.location.href;
 
 
-        var storageUrl = 'https://day-01.firebaseio.com/items.json';
+        var storageUrl = 'https://day-01.firebaseio.com/items2.json';
         var reqUrl = 'https://day-01.firebaseio.com/items.json?orderBy="$key"&startAt="2019-06"&endAt="2019-07"';
 
         function loadStorage(){
             $.ajax({
-                url: reqUrl,
+                url: storageUrl,
                 type: 'GET',
                 success: (data, textStatus, jqXHR) => {
                     console.log('load success');
