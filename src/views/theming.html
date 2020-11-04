@@ -22,7 +22,7 @@
 				var items;
 				var calendarEl = document.getElementById('calendar');
 				var calendar;
-				var today = getToday();
+				var today = helperDateFormat.getToday();
 				
 
 				
@@ -63,45 +63,38 @@
 		})
 	}
 	
-	var getToday = (function(){
-		return '2020-11-04';
-	})
+	
+	
+	/**
+     * @method  helperDateFormat()
+     * @param { null }
+     * @returns { Object }
+     * @description 
+     */
+	var helperDateFormat = (function(){
+		
+		var date = new Date();
+		
 
-	var helperItem = (function(){
-		var items = null;
-		//console.log(data)
 		return {
-			getItems(){
-				if(!items === null) {
-					return items;
-				}
+			getDate(){
+				return date;
 			},
-			setItems(data){
-				console.log(data)
-				items = Object.keys(data).map(function (key) { 
-					//return [String(key), data[key]]; 
-					return data[key];
-					//return items2.push(data[key])
-				});
-				console.log(items) 
-				this.getItems()
+
+			getToday(){
+
+				return '2020-11-04';
+			},
+			getISOString(){
+				
+				return YYYY-MM-DD-HH-mm-ss;
 			}
 		}
 	})()
 
-	
+	console.log(helperDateFormat.getDate())
 
 
-	
-	// const obj = {
-	// 	id: "2020-11-02-11:56:29",
-	// 	teamName: "ICT개발2팀",
-	// 	title: "파이썬",
-	// 	managerTel: "010-2828-7777",
-	// 	start: "2020-11-02",
-	// 	end: "2020-11-05"
-	// }
-	//var newData = JSON.stringify(obj);
 
 	$.fn.serializeObject = function() {
 		var result = {}
@@ -141,7 +134,7 @@
 		console.log(serializeObject)
 		var obj = new Object();
 
-		var period = format(new Date());
+		var period =  null; //helperDateFormat.getISOString()
 		obj.id = period;
 		obj.teamName = serializeObject.teamName;
 		obj.title = serializeObject.title;
@@ -151,19 +144,19 @@
 
 		var newData = JSON.stringify(obj);
 
-		$.ajax({
-			url: `https://day-01.firebaseio.com/items2/${obj.id}.json`, // 서버에 전달할 파일명
-			dataType: 'text',
-			cache : false,
-			processData: false,
-            contentType: false,
-			type: 'PUT',
-			data: newData,
-			success: function() {
-				console.log('save success'); // 성공시 코드
-				createCalendar()
-			}
-		});
+		// $.ajax({
+		// 	url: `https://day-01.firebaseio.com/items2/${obj.id}.json`, // 서버에 전달할 파일명
+		// 	dataType: 'text',
+		// 	cache : false,
+		// 	processData: false,
+        //     contentType: false,
+		// 	type: 'PUT',
+		// 	data: newData,
+		// 	success: function() {
+		// 		console.log('save success'); // 성공시 코드
+		// 		createCalendar()
+		// 	}
+		// });
 	}
 
 
@@ -171,12 +164,6 @@
 	document.addEventListener('DOMContentLoaded', function() {
 		createCalendar();
 
-
-
-		// $('#saveBtn').on('click', function(e){
-		// 	e.preventDefault();
-		// 	updateItem();
-		// })
 	});
 
 
