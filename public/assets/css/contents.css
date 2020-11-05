@@ -1,0 +1,492 @@
+@charset "UTF-8";
+/* 에릭마이어 reset */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, /* sup, */ tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, body, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+html { -webkit-touch-callout: none; -webkit-user-select:none; /* -webkit-tap-highlight-color:rgba(0, 0, 0, 0); */ }
+html, body {  width: 100%; height: 100%; background-color: #fff;  margin: auto;overflow-x:hidden}
+body { -webkit-text-size-adjust: none; line-height: 1; font-size: 14px; font-family: 'Noto Sans KR', 'NotoSansKR', 'mulgun gothic', Dotum, sans-serif; overflow-y: auto; color: #222; }
+body.main{background: #9ae5e1;}
+body.main .app-content{padding:0 15px!important}
+ol, ul, li { list-style: none; }
+table { border-collapse: collapse; border-spacing: 0; width:100%}
+*,
+*:before, 
+*:after { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+a { border: none; }
+a:link, a:visited, a:hover, a:active, a:focus { text-decoration: none; cursor: pointer; color: inherit; }
+
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Noto Sans KR Light'), local('NotoSansKR-Light'),
+		url('../font/noto-sans-kr-v12-latin_korean-300.woff2') format('woff2'),
+		url('../font/noto-sans-kr-v12-latin_korean-300.woff') format('woff');
+}
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Noto Sans KR Regular'), local('NotoSansKR-Regular'),
+		url('../font/noto-sans-kr-v12-latin_korean-regular.woff2') format('woff2'),
+		url('../font/noto-sans-kr-v12-latin_korean-regular.woff') format('woff');
+}
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 500;
+	src: local('Noto Sans KR Medium'), local('NotoSansKR-Medium'),
+		url('../font/noto-sans-kr-v12-latin_korean-500.woff2') format('woff2'),
+		url('../font/noto-sans-kr-v12-latin_korean-500.woff') format('woff');
+}
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Roboto Light'), local('Roboto-Light'),
+		url('../font/roboto-v20-latin-300.woff2') format('woff2'),
+		url('../font/roboto-v20-latin-300.woff') format('woff');
+}
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Roboto'), local('Roboto-Regular'),
+		url('../font/roboto-v20-latin-regular.woff2') format('woff2'),
+		url('../font/roboto-v20-latin-regular.woff') format('woff');
+}
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 500;
+	src: local('Roboto Medium'), local('Roboto-Medium'),
+		url('../font/roboto-v20-latin-500.woff2') format('woff2'),
+		url('../font/roboto-v20-latin-500.woff') format('woff');
+}
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Roboto Bold'), local('Roboto-Bold'),
+		url('../font/roboto-v20-latin-700.woff2') format('woff2'),
+		url('../font/roboto-v20-latin-700.woff') format('woff');
+}
+
+input,
+button { border: 0; -webkit-appearance: none; }
+
+/* main header */
+.app-wrap header > .inner { text-align: center;}
+.app-wrap .top-mypage { position: absolute; left: 15px; top: 10px; width: 29px; height: 29px; background: url('../images/btn-profile.png') no-repeat center; background-size: 19px auto; font-size: 0; }
+.app-wrap .top-setting { position: absolute; right: 15px; top: 10px;  width: 29px; height: 29px; background: url('../images/btn-setting.png') no-repeat center; background-size: 19px auto; font-size: 0; }
+.app-wrap header.main .inner > .home, 
+header.login .inner > .home { margin-top: 0px; }
+.app-wrap header.main .inner > .home > a, 
+header.login .inner > .home > a { display: inline-block; padding: 10px; }
+
+/* 서브페이지 헤더 */
+header.sub-header .inner > .home { width: calc(100% - 66px); }
+header.sub-header .inner a.home { display: inline-block; width: 100%; font-size: 19px; letter-spacing: -0.95px; color: #222; font-weight: normal; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; text-align: left; }
+header.sub-header .inner a.home img { display: inline-block; width: 11px; height: auto; margin-right: 20px; vertical-align: bottom; }
+
+.main header.sub2-header .inner h1{font-weight:500;line-height: 75px;font-size: 24px;}
+header.sub2-header .inner{border-bottom:0;}
+header.sub2-header .inner h1 {position:relative;width:100%;line-height:48px;font-size: 19px; letter-spacing: -0.95px; color: #222; font-weight: normal; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; text-align: center; }
+header.sub2-header .inner a.home{position:absolute;    left: 17px;top: -13px;}
+header.sub2-header .inner a.home img { display: inline-block; width: 11px; height: auto; margin-right: 20px; vertical-align: bottom; }
+header.sub2-header .header-setting{display:none}
+header.sub2-header .header-function{display:none;}
+header.sub2-header h1 .select-temp{display:none;}
+header.sub2-header.albaManage .header-function{display:block}
+.alba-monthly header.sub2-header h1 .select-temp{display:block;max-width:100px;height: 20px;line-height:22px;margin: 0 auto;padding-right: 20px;box-sizing: content-box;border: 0;background-position-x: 100%;text-overflow: ellipsis;width:auto;font-size:19px;letter-spacing: -0.95px;font-weight:500}
+.alba-monthly header.sub2-header .header-home{display:none}
+.alba-monthly header.sub2-header .header-setting{display:block}
+
+/* sub header */
+.app-wrap header.sub > .inner { text-align: left; border-bottom:0}
+.app-wrap header.sub .inner > .home { width: calc(100% - 30px); }
+.app-wrap header.sub .inner a.home { display: inline-block; width:auto; font-size: 19px; letter-spacing: -0.95px; color: #222; font-weight: normal; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.app-wrap header.sub .inner a.home img { display: inline-block; width: 11px; height: auto; margin-right: 20px; vertical-align: bottom; }
+.app-wrap header.sub .header-function { margin-top: 11px; margin-right: -5px; }
+.app-wrap header.sub .header-function .header-home { width: 29px; height: 27px; background: url('../images/icon-home.png') no-repeat center; background-size: 19px 17px; margin-right: 0; }
+.app-wrap header.sub .header-notice { display: none; }
+
+.app-wrap .app-content.sub { padding: 0; padding-bottom: 30px; max-width:500px;margin:0 auto}
+.app-wrap .app-content.sub .bg-wrap { padding: 0 6px 6px; }
+.app-wrap .app-content.sub .select-box.store-name.left { text-align: left; padding: 20px 20px 17px; }
+.app-wrap .app-content.sub .select-box.store-name.left .drop-down { max-width: 66%; padding-left: 0; padding-right: 15px; font-size: 13px; line-height: 18px; background-position: right; }
+.app-wrap .app-content.sub .bg-wrap-no { margin-left: -6px; width: calc(100% + 12px); }
+.app-wrap .toggle-section { position: relative; width: 100%; height: auto; background-color: #ffffff; padding: 23px 20px 20px; }
+.app-wrap .toggle-section.toggle-group { padding: 23px 14px; }
+.app-wrap .toggle-section.toggle-group .card-list { padding-top: 15px; }
+.app-wrap .toggle-section.toggle-group .card-list li + li { padding-top: 15px; }
+.app-wrap .toggle-section + .toggle-section { margin-top: 6px; }
+.app-wrap .toggle-section.toggle-group + .toggle-section.toggle-group { position: relative; margin-top: 0px; }
+.app-wrap .toggle-section.toggle-group + .toggle-section.toggle-group:before { content: ""; position: absolute; top: 0; width: calc(100% - 28px); height: 1px; background-color: #ededed; }
+.app-wrap .toggle-section .no-result { text-align: center; color: #999; margin-top: 15px; margin-bottom: 7px; }
+.app-wrap .toggle-section .open-arrow { float: right; }
+.app-wrap .toggle-section .open-arrow img { width: 14px; transform: rotate( 180deg ); }
+.app-wrap .toggle-section .open-arrow.on img { transform: rotate( 0deg ); }
+.app-wrap .app-content.sub .card-title { font-weight: normal; }
+.app-wrap .app-content.sub .card-title .point-num { color: #f86253; }
+.app-wrap .app-content.sub .card-title em{font-weight:500}
+.app-wrap .app-content.sub .btn-slide-function-app + div + div { display: none; }
+.app-wrap .app-content.sub .payroll-title { font-size: 14px; line-height: 20px; letter-spacing: -0.98px; color: #222; }
+.app-wrap .app-content.sub .payroll-title .point-text { color: #f86253; }
+.app-wrap .app-content.sub .payroll-desc { font-size: 12px; letter-spacing: -0.84px; color: #666; line-height: 16px; }
+.app-wrap .app-content.sub .working-day { margin-left: 10px; }
+.app-wrap .app-content.sub .payroll-num { font-size: 16px; line-height: 28px; letter-spacing: -0.4px; color: #222; margin-left: 10px; margin-right: 3px; }
+.app-wrap .app-content.sub .payroll-desc .division { margin: 0 15px; }
+
+.app-wrap .store-name .today { font-size: 12px; letter-spacing: -0.3px; color: #707070; margin-bottom: 8px; }
+.app-wrap .store-name .btn-sky { float: right; margin-top: -4px; }
+.app-wrap .card-list .list-conts.time .btn-default { margin-left: 20px; border-radius: 4px; color: #000; }
+
+.app-wrap .app-content.sub .wifi-link { margin-top: 10px; }
+.app-wrap .app-content.sub .wifi-link img { width: 100%; vertical-align:bottom}
+.app-wrap .app-content.sub .salary-day { display: inline-block; margin: 20px 0 0; padding: 0 20px; }
+.app-wrap .app-content.sub .salary-day .salary-day-color { display: inline-block; width: 7px; height: 7px; background-color: #d71a1a; border-radius: 50px; vertical-align: top; font-size: 0; margin-top: 5px; margin-right: 2px; opacity: 1; }
+.app-wrap .app-content.sub .salary-day .my-schedule-color { display: inline-block; width: 7px; height: 7px; background-color: #83c7cf; border-radius: 50px; vertical-align: top; font-size: 0; margin-top: 3px; margin-right: 2px; }
+.app-wrap .app-content.sub .salary-day ul { font-size: 0; }
+.app-wrap .app-content.sub .salary-day li { float: left; font-size: 11px; letter-spacing:-0.28px;}
+.app-wrap .app-content.sub .salary-day .division { margin: 0 10px; }
+.app-wrap .app-content.sub .salary-day .num-employees { color: #666; }
+.app-wrap .app-content.sub.albaManagement { padding-top:30px;position:relative;margin:0 auto;max-width:640px;}
+.app-wrap .app-content.sub.albaManagement .btn-slide-function-app + div + div{display:none}
+.app-wrap .app-content.albaManagement .select-box.store-name.left{padding-top:37px;position:relative;}
+.app-wrap .app-content.albaManagement{padding-bottom:0; }
+.app-wrap .app-content.albaManagement .contents-wrap{max-width:640px;margin:0 auto;background: #fff;border-radius: 30px;padding-top:10px}
+.app-wrap .app-content.albaManagement .top-wrap{position:absolute;top:33px;right:22px}
+.app-wrap .app-content.albaManagement .top-wrap::after{content:'';display:block;clear:both}
+.app-wrap .app-content.albaManagement .today{margin-bottom:0;font-size:15px;color:#222;letter-spacing:-0.025em;}
+.app-wrap .app-content.albaManagement .btn.albaList{font-size:13px;color:#fff;position: relative; float: right;letter-spacing:-0.065em;padding:0 20px 0 14px;background:#444;border-radius:14px;height:28px;line-height:27px;}
+.app-wrap .app-content.albaManagement .btn.albaList::after{content: '';position: absolute;    top: 12px;right: 10px;width: 5px;height: 5px;border-right: 1px solid #fff;    border-bottom: 1px solid #fff;    transform: rotate( -45deg );}
+.app-wrap .app-content.albaManagement .select-box.store-name.left .drop-down{font-size:18px;color:#222;max-width:60%;white-space: nowrap; text-overflow: ellipsis; overflow: hidden;  letter-spacing: -0.9px;  font-weight: normal;padding-right:20px;}
+.app-wrap .app-content.albaManagement .select-salary{margin-top:20px;background:#fff;border-radius:10px;border:1px solid #70dfd9}
+.app-wrap .app-content.albaManagement .select-salary > button{background:none;width:100%;padding:15px 23px;display:block}
+.app-wrap .app-content.albaManagement .select-salary > button span{line-height:30px;font-size:16px;letter-spacing:-0.05em;color:#222;font-weight:400}
+.app-wrap .app-content.albaManagement .select-salary > button::after{content:'';display:block;clear:both}
+.app-wrap .app-content.albaManagement .select-salary .salary-month{float:left;font-weight:500}
+.app-wrap .app-content.albaManagement .select-salary .salary-value{position:relative;  letter-spacing: -0.8px;	font-size:18px;float:right;padding-right:20px;}
+.app-wrap .app-content.albaManagement .select-salary .salary-value::after{color:#2c2f36;content:'';position:absolute;top:50%;right:0;width:11px;height:6px;margin-top:-4px;background:url(../images/btn-down-arrow.png) no-repeat right center / 100% auto;}
+.app-wrap .app-content.albaManagement .select-salary .salary-value b{  font-family: Roboto;	  letter-spacing: -0.49px;	font-size:19px;}
+.app-wrap .app-content.albaManagement .open .salary-value::after{
+	transform: rotate( 180deg ); 
+}
+.app-wrap .app-content.albaManagement .select-salary .salary-detail{display:none;}
+.app-wrap .app-content.albaManagement .select-salary.open .salary-detail{display:block;width:100%;  color: #959595;  letter-spacing: normal;	font-size: 12px;float:left;}
+.app-wrap .app-content.albaManagement .select-salary > button.open{padding-bottom:5px;}
+
+.app-wrap .app-content.albaManagement .salary-contents{display:none;background:url(../images/bg_albaManagement_list.jpg) repeat-x 0 bottom/ 20px auto;margin-bottom:-1px;border-top:1px solid #ededed;padding:15px 0 20px 0}
+.app-wrap .app-content.albaManagement .salary-contents .scrollY-wrap > div{padding:0 25px 0 20px;line-height:0;font-size:0}
+.app-wrap .app-content.albaManagement .salary-contents .scrollY-wrap > div > p{padding:15px 0;line-height:1;vertical-align:top;display:inline-block;width:35%;font-size:17px;color:#000;}
+.app-wrap .app-content.albaManagement .salary-contents .scrollY-wrap > div > p:first-child{width:30%}
+
+
+.app-wrap .app-content .btn-float{position:absolute;bottom:-72px;right:4px;z-index:1}
+.app-wrap .app-content .btn-float > a{position:relative;width:61px;height:63px;display:block;/*background:url(../images/btn_plus_bg.png) no-repeat 0 0 / 100% auto;*/z-index:1}
+.app-wrap .app-content .btn-float > a img{transition: 0.2s;width:54px;height:54px;margin:1px 0 0 1px;position:relative;}
+.app-wrap .app-content .btn-float > a::before{content:'';position:absolute;width:56px;height:56px;border:2px solid #00c6bc;border-radius: 50%;background: #fff;}
+.app-wrap .app-content .btn-float .menu-wrap li{transition: 0.2s;position:absolute;top:1px;left:1px;z-index:-1;  line-height: 1.17;	letter-spacing: -0.6px;	color: #6941ce;	font-weight: 500;	font-size: 12px;text-align:center;border-radius:54px;border:3px solid #6941ce;background:#fff}
+.app-wrap .app-content .btn-float .menu-wrap li a{padding-top:10px;display:block;width:48px;height:48px;}
+.app-wrap .app-content .btn-float .menu-wrap .scheduleAdd{border-color:#00c6bc;  color: #01aca3;}
+.app-wrap .app-content .btn-float.open .menu-wrap .scheduleAdd{transition: 0.3s;top:-66px}
+.app-wrap .app-content .btn-float.open .menu-wrap .albaAdd{top:-134px}
+.app-wrap .app-content .btn-float.open .menu-wrap li::before{content:'';position:absolute;top:0;left:0;width:56px;height:59px;/*background:url(../images/btn_plus_bg.png) no-repeat 0 0 / 100% auto;*/z-index:-1}
+.app-wrap .app-content .btn-float .menu-wrap:first-child li{position:static;margin:0 0 5px 0;}
+.app-wrap .app-content .btn-float.open a img{transform: rotate( 45deg );}
+
+.app-wrap .app-content.albaManagement .checkup-wrap{position:relative;background:#f2f3f5;border-radius:10px;padding:23px 0 20px 75px;max-width:640px;margin:20px auto}
+.app-wrap .app-content.albaManagement .checkup-wrap .tit{  letter-spacing: -0.65px;	font-size: 13px;color:#222}
+.app-wrap .app-content.albaManagement .checkup-wrap .tit b{color:#d71a1a}
+.app-wrap .app-content.albaManagement .checkup-wrap .checkup-list{max-width:300px;margin-top:7px}
+.app-wrap .app-content.albaManagement .checkup-wrap .checkup-list::after{content:'';display:block;clear:both}
+.app-wrap .app-content.albaManagement .checkup-wrap .checkup-list li{margin-top:3px;float:left;width:50%;}
+.app-wrap .app-content.albaManagement .checkup-wrap .checkup-list .date{ margin-left:10px; letter-spacing: -0.35px;	font-size:14px;}
+.app-wrap .app-content.albaManagement .checkup-wrap .checkup-list .name{max-width:50px;margin:0}
+.app-wrap .app-content.albaManagement .checkup-wrap .ico-checkup{position:absolute;top:15px;width:67px;left:0;}
+
+.app-wrap .app-content.albaManagement .card-title{font-size: 13px;  letter-spacing: -0.91px;}
+.app-wrap .app-content.albaManagement .card-list{padding-top:25px;}
+.app-wrap .app-content.albaManagement .card-list li { border-top:1px solid #ededed }
+.app-wrap .app-content.albaManagement .card-list li:first-child { padding-top: 0; border-top:0}
+.app-wrap .app-content.albaManagement .card-list li > a{display:block}
+
+
+
+/*풀캘린더*/
+.cal-wrap { position:fixed; display:block; width:100%; min-width:320px; bottom:0; left:0; padding:40px 10px 20px; background:#fff; font-size:12px; line-height:16px; box-sizing:border-box; transition:.5s cubic-bezier(.2,.01,.41,.99); transform:translate3d(0,100%,0); opacity:0; box-shadow:0 0 8px rgba(0,0,0,.3); z-index:1000; }
+.cal-wrap.showOn { transform:translate3d(0,0,0); transition:.5s cubic-bezier(.29,.04,.19,.96); opacity:1; }
+.cal-wrap.on { display:block; }
+.cal-wrap .cal-area { max-width:340px; margin:0 auto; }
+
+.cal-wrap button { border:none; background:none; font-size:12px; line-height:16px; width:100%;padding-right:0;padding-left:0;}
+.cal-wrap select { display:inline-block; width:auto; margin:0 2px; padding:2px 3px 4px; font-size:13px; line-height:15px; color:#151515; font-weight:bold; vertical-align:middle;}
+.cal-wrap .cal-title, .cal-wrap .tx-yearMon { display:inline-block; margin:0 2px; padding:2px 3px 4px; font-size:18px; line-height:24px; color:#151515; font-weight:bold; vertical-align:middle; letter-spacing:-0.05em; }
+.cal-wrap caption { height: 1px; overflow: hidden; line-height: 0; margin-top: -1px; color: transparent; }
+
+.cal-wrap .cal-top { position:relative; width:100%; margin-bottom:15px; overflow:hidden; text-align:center; }
+.cal-wrap .cal-top .cal-btn { position:relative; display:inline-block; width:24px; height:24px; text-indent:-9999px; }
+.cal-wrap .cal-top .cal-btn:after { content:''; position:absolute; width:0; height:0; top:6px; left:0; border:6px solid transparent; border-right:10px solid #222; }
+.cal-wrap .cal-top .cal-btn.next:after { top:6px; left:8px; border:6px solid transparent; border-left:10px solid #222; }
+.cal-wrap .cal-top .cal-btn.prev:disabled:after { border-right-color:#aaa; }
+.cal-wrap .cal-top .cal-btn.next:disabled:after { border-left-color:#aaa; }
+
+.cal-wrap table { border-collapse:collapse; }
+.cal-wrap th { padding:0 0 7px; background:#fff; color:#6b6c6e;letter-spacing:normal; border:none; font-size:10px; font-weight:normal;}
+.cal-wrap th:first-child{color:#f86253}
+.cal-wrap th:last-child{color:#007ac6}
+.cal-wrap td { padding:5px 0; border:none;}
+.cal-wrap tr td:last-child .num { color:#007ac6!important; }
+.cal-wrap tr td:first-child .num { color:#f86253!important; }
+.cal-wrap td button, .cal-wrap td > span { display:block; width:100%; font-size:14px; border-radius:3px; text-align:center; box-sizing:border-box; padding-top:20px;}
+.cal-wrap .cal-area button[disabled], .cal-wrap td > span { color:#999; cursor:default;}
+.cal-wrap .select-day { color:#fff; }
+.cal-wrap .btn-hover { background:#15a0d1; }
+.cal-wrap.week tr th.week-num { font-size:12px; color:#fff; background:#999; border-right:1px solid #fff; border-bottom:1px solid #fff; }
+.cal-wrap.week tr td.week-num { color:#fff; text-align:center; background:#999; }
+
+.cal-wrap .cal-btns { max-width:340px; margin:30px auto 0; text-align:center; clear:both;}
+.cal-wrap .cal-btns button { display:inline-block; width:100%; height:50px; padding:5px 30px; font-size:17px; line-height:40px; background:#555; color:#fff; border:1px solid #555; box-sizing:border-box; }
+.cal-wrap .cal-btns button:disabled { background:#fff; color:#ccc; border-color:#ccc;}
+
+.btn-cal-close { position:absolute; width:24px; height:24px; top:15px; right:15px; text-indent:-10000px; background:url(../images/ico_cal-close.png) no-repeat center 50% / 15px 15px; }
+
+/* 달력 외부 클릭 시 닫기용 bg */
+.cal-bg { position:fixed; width:100%; height:100%; top:0; left:0; transform:translate3d(0,100%,0); transition-delay:.5s; z-index:999; }
+.cal-bg.showOn { transform:translate3d(0,0%,0); transition-delay:0s;}
+.cal-bg > p { position:fixed; width:100%; height:100%; top:0; left:0; background:rgba(0,0,0,.8); opacity:0; transition:opacity .3s cubic-bezier(.29,.04,.19,.96); }
+.cal-bg.showOn > p { opacity:1; }
+
+/* 페이지 내 달력 */
+.cal-wrap.in-page { position:relative; padding:0 0 20px 0; display:block; transform:translate3d(0,0,0); opacity:1; bottom:auto; top:0; left:0; box-shadow:none; z-index:1; border-radius:10px}
+.cal-wrap.in-page .cal-area { max-width:none; }
+.cal-wrap.in-page .cal-top { display:none;}
+.cal-wrap.in-page th,
+.cal-wrap.in-page td { border-bottom:1px solid #ededed; }
+.cal-wrap.in-page tr:last-child td{border-bottom:0}
+.cal-wrap.in-page td { position:relative; padding:0; }
+.cal-wrap.in-page td button, .cal-wrap.in-page td a { height:100%; outline: none;}
+.cal-wrap.in-page td .num { position:absolute;height:16px; top:5px; left:50%;transform: translateX(-50%); font-size:10px; line-height:1; text-align:center;}
+.cal-wrap.in-page td .num.payday::after{content:'';position:absolute;top:0;left:100%;margin-left:3px;width:4px;height:4px;border-radius:4px;background:#d71a1a;}
+.cal-wrap.in-page td .select-day .num { background:transparent; color:#222; }
+.cal-wrap.in-page td .holiday .num { color:#f86253; }
+.cal-wrap.in-page td .holi-tx { position:absolute; width:calc(100% - 20px); height:16px; padding:0; top:5px; left:18px; font-size:11px; line-height:16px; color:#f86253; text-align:left; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+.date-set-wrap, .date-pn-wrap { position:relative; text-align:center; margin-bottom:15px; padding-top:10px}
+.date-set-wrap .date-tab-menu { margin-bottom:25px; overflow:hidden; }
+.date-set-wrap .date-tab-menu li { float:left; margin-right:22px;}
+
+.date-set-wrap .date, .date-pn-wrap .date { display:inline-block; vertical-align:middle;font-size:17px;color:#222;letter-spacing:-0.44px}
+.date-set-wrap .date i, .date-pn-wrap .date i { display:inline-block; line-height:24px;font-style:normal}
+
+.date-set-wrap .btn-date, .date-pn-wrap .btn-date { background:none;position:relative; display:inline-block; width:24px; height:24px; text-indent:-9999px; }
+.date-set-wrap .btn-date:after, .date-pn-wrap .btn-date:after { content:''; position:absolute; width:0; height:0; top:6px; left:0; border:6px solid transparent; border-right:10px solid #222; }
+.date-set-wrap .btn-date.next:after, .date-pn-wrap .btn-date.next:after { top:6px; left:8px; border:6px solid transparent; border-left:10px solid #222; }
+.date-set-wrap .btn-date.prev:disabled:after,
+.date-pn-wrap .btn-date.prev:disabled:after { border-right-color:#aaa; }
+.date-set-wrap .btn-date.next:disabled:after,
+.date-pn-wrap .btn-date.next:disabled:after { border-left-color:#aaa; }
+
+.inp-cal { display:inline-block; margin:0 5px; height:24px; font-size:18px; line-height:24px; font-weight:bold; box-sizing:border-box; }
+.inp-cal .cal { position:absolute; width:1px; height:1px; top:-10000px; left:0; padding:0; opacity:0; }
+.inp-cal:after { content:''; display:block; clear:both; }
+.inp-cal .btn-cal { position:absolute; bottom:0; right:0; width:24px; height:24px; text-align:center; line-height:24px; vertical-align:top; text-indent:-10000px; background:url(../images/ico_calendar.png) no-repeat center 50% / 20px 20px; }
+.inp-cal .btn-cal img { vertical-align:middle; }
+
+.date-set-wrap.cnt-box { margin-bottom:-14px;padding-top:15px; }
+.date-set-wrap.cnt-box .btn-cal { right:24px; bottom:24px; }
+
+.schedule-calendar #sortCal{position:absolute;top:3px;right:0;border:0;font-size:13px;letter-spacing:-0.13px;color:#222;width:auto;padding:0 35px 0 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:90px;font-weight:400}
+.schedule-calendar .cnt-box{position:relative;}
+.schedule-calendar button.select-day::after{content:'';width:100%;height:100%;position:absolute;top:0;left:0;border:2px solid #00d7cc;border-radius:10px}
+.schedule-calendar button.today::before{content:'';width:100%;height:100%;position:absolute;top:0;left:0;border:2px solid #dadada;border-radius:10px}
+.schedule-calendar button.today.select-day::before{display:none}
+.schedule-calendar .nameWrap{display:inline-block;overflow:hidden;height:52px;width:100%;padding:0 2px;position:relative;z-index:-1;transition: 0.3s;}
+.schedule-calendar .nameWrap i.name{transition: 0.2s;float:left}
+.scroll .schedule-calendar .nameWrap{height:25px;}
+.scroll .schedule-calendar .nameWrap i.name{font-size:0;height:2px;border-radius:0;line-height:2px;margin-bottom:2px;}
+
+.nameWrap i.name {display:inline-block;width:100%;height:13px; padding:0 3px; font-size:9px; line-height:13px; text-align:center; font-style:normal;color:#fff;background:#000;border-radius:2px;margin-bottom:3px;overflow:hidden}
+.nameWrap i.name.v-1{background-color:#7986cc!important}
+.nameWrap i.name.v-2{background-color:#d50002!important}
+.nameWrap i.name.v-3{background-color:#f5511e!important}
+.nameWrap i.name.v-4{background-color:#f5c026!important}
+.nameWrap i.name.v-5{background-color:#0c8043!important}
+.nameWrap i.name.v-6{background-color:#32b67a!important}
+.nameWrap i.name.v-7{background-color:#039be6!important}
+.nameWrap i.name.v-8{background-color:#3f51b5!important}
+.nameWrap i.name.v-9{background-color:#8e24aa!important}
+.nameWrap i.name.v-10{background-color:#6941ce!important}
+.nameWrap i.name.v-11{background-color:#f98279!important}
+.nameWrap i.name.v-12{background-color:#616161!important}
+
+/* 하단모달 */
+.layer-pop-wrap.default .layer-pop-inner-wrap{border-radius:15px}
+.layer-pop-wrap.default .m-title{font-size: 20px;font-weight:bold;color: #000000;border-bottom:0;padding-top:20px;height:auto;line-height:normal}
+.layer-pop-wrap.default .btn-modal-closed{top:26px;height:auto}
+.layer-pop-wrap { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index:1000; width: 100%; height: 100%; overflow: hidden; display: none; }
+.layer-pop-wrap.on { display: block; }
+.dimmed-layer { position: absolute; left: 0; top: 0; width: 100%; height: 100%; transition: .5s; background: transparent; }
+.dimmed-layer.on { background: rgba(0,0,0,0.6); }
+.layer-pop-wrap > .layer-pop-inner-wrap { position: absolute; left: 0; bottom: -100%; width: 100%; max-height: calc(100% - 50px); transition: .5s; overflow-y: hidden; background: #fff; }
+.layer-pop-wrap.color > .layer-pop-inner-wrap{padding: 0 20px 20px 20px; }
+.layer-pop-wrap > .layer-pop-inner-wrap.on { bottom: 0 !important; }
+.layer-pop-inner-wrap.round { border-radius:30px 30px 0 0;padding:0}
+.layer-pop-wrap .m-title { height: 50px; line-height: 50px; border-bottom: 1px solid #e1e1e1; font-size: 17px; letter-spacing: -0.85px; color: #222; text-align: center; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+.layer-pop-wrap .m-contents { margin-top: 25px; }
+.layer-pop-wrap.color .m-contents { margin-top: 20px; }
+.layer-pop-wrap .btn-modal-closed { position: absolute; top: 17px; right: 20px; width: 18px; height: 17px; }
+.layer-pop-wrap .btn-modal-closed img { width: 100%; display:block}
+.layer-pop-wrap .btn-area,
+.main-wrap .layer-pop-wrap .btn-area { margin-top: 30px; }
+.layer-pop-wrap .btn-modal-closed.txt { position: absolute; top: 30px; right: 30px; width: auto; height: 17px; }
+.layer-pop-wrap .btn-modal-closed.txt img { width: 13px;margin-left:3px; display:inline-block;vertical-align:middle;}
+.layer-pop-wrap.on .dimmed-layer{background: rgba(0,0,0,0.6);}
+.layer-pop-wrap.on .layer-pop-inner-wrap{bottom: 0 !important;}
+.layer-pop-wrap.color.default .btn-modal-closed{top:18px}
+.layer-pop-wrap.color.default .btn-modal-closed img{width:15px;display: inline-block;margin-top:8px;}
+.layer-pop-wrap.color.default .m-title{  letter-spacing: -0.4px;	font-size: 16px;text-align:left;padding-top:22px;padding-left:10px}
+.layer-pop-wrap.color.default .btn-color{margin:10px;background: none;padding: 0;vertical-align: middle;height:45px;line-height: 45px;float:left}
+.layer-pop-wrap.color.default .btn-color i{font-size:0;width:45px;height:45px;border-radius:45px;padding:0;margin:0;vertical-align:top}
+.layer-pop-wrap.color.default .btn-color input[type=radio]:not(old) + label{padding-left:0}
+.layer-pop-wrap.color.default .btn-color input[type=radio]:not(old) + label:after{display:none;}
+.layer-pop-wrap.color.default .btn-color input[type=radio]:checked + label i{background-image:url('../images/ico_colorCheck.png');background-repeat: no-repeat;background-size:100% auto;background-position-y: 2px; }
+select{background:url('../images/btn-down-arrow.png') center center no-repeat;background-size:9px auto;    -webkit-appearance: none;-moz-appearance: none;appearance: none;}
+
+.layer-pop-wrap.color.default .content{padding:0}
+.layer-pop-wrap.color.default .content::after{content:'';display:block;clear:both}
+.layer-pop-wrap.default > .layer-pop-inner-wrap{display:none;top:50%;transform:translate(-50%,-50%);left:50%;width:auto;}
+.layer-pop-wrap.default > .layer-pop-inner-wrap.on{bottom: auto !important; display:block;}
+.layer-pop-wrap.color > .layer-pop-inner-wrap.on{width:350px}
+input[type=radio]:not(old) { margin: 0; padding: 0; opacity: 0; width:0; height: 0; border: 0 ; } 
+
+.btn-calendar-add { position: absolute; top:0; right:0; width: 60px; height: 45px; line-height: 45px; text-align:center; overflow: hidden; text-indent: -999px; border-radius: 0 5px 5px 0; background: #ededed url('../images/icon-calendar.png') no-repeat center center; background-size: 22px 23px; }
+
+/* datepicker */
+.ui-datepicker.ui-widget.ui-widget-content { width: 300px; padding: 20px; border: 1px solid #333; z-index:1000 !important; }
+.ui-datepicker.ui-widget.ui-widget-content[style*="top: 1040px;"] { margin-top: -20px; }
+.ui-datepicker.ui-widget.ui-widget-content { left: 50% !important;  transform: translate(-50%, 0); }
+.ui-datepicker.ui-widget.ui-widget-content .ui-widget-header { background: #fff; border: none; height: 50px; padding: 0; }
+.ui-datepicker.ui-widget.ui-widget-content .ui-datepicker-title select { font-family: 'Roboto'; color: #222; height: inherit; padding: 4px 10px; border: 0; font-size: 20px; }
+.ui-state-highlight,
+.ui-datepicker.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight { background: #fa6e44; color: #fff; border: none; }
+.ui-datepicker.ui-widget.ui-datepicker td span,
+.ui-widget.ui-datepicker td a { text-align: center; }
+.ui-widget.ui-datepicker .ui-state-default,
+.ui-widget.ui-datepicker .ui-widget-content .ui-state-default,
+.ui-widget.ui-datepicker .ui-widget-header .ui-state-default,
+.ui-widget.ui-datepicker .ui-button,
+html .ui-widget.ui-datepicker .ui-button.ui-state-disabled:hover,
+html .ui-widget.ui-datepicker .ui-button.ui-state-disabled:active { width: 25px; height: 25px; line-height: 20px; border: none; background: #fff; font-weight: normal; color: #454545; text-align: center; margin: auto; }
+.ui-widget.ui-datepicker .ui-state-active,
+.ui-widget.ui-datepicker.ui-widget-content .ui-state-active,
+.ui-widget.ui-datepicker .ui-widget-header .ui-state-active,
+.ui-widget.ui-datepicker a.ui-button:active,
+.ui-widget.ui-datepicker .ui-button:active,
+.ui-widget.ui-datepicker .ui-button.ui-state-active:hover { border: none; background: #fa6e44; font-weight: normal; color: #fff; }
+.ui-datepicker th.ui-datepicker-week-end:first-child > span { color: #fa6e44; }
+.ui-widget.ui-datepicker .ui-datepicker-week-end:first-child .ui-state-default { color: #fa6e44; }
+.ui-widget.ui-datepicker .ui-datepicker-week-end:last-child { color: #222; }
+.ui-widget.ui-datepicker .ui-state-active, 
+.ui-widget.ui-datepicker.ui-widget-content .ui-state-default.ui-state-active { color: #fff; }
+
+#ui-datepicker-div.ui-datepicker .ui-datepicker-title select { background: #fff url('../images/arrow-down-01.png') right 3px center no-repeat; background-size: 11px 6px; }
+.ui-datepicker .ui-datepicker-prev .ui-icon { background: url('../images/btn-arrow-left.png') no-repeat center; background-size: 10px 17px; }
+.ui-datepicker .ui-datepicker-next .ui-icon { background: url('../images/btn-arrow-right.png') no-repeat center; background-size: 10px 17px; }
+#ui-datepicker-div.ui-datepicker .ui-datepicker-prev, 
+#ui-datepicker-div.ui-datepicker .ui-datepicker-next { top: 1px; }
+
+/* 버튼 2개 분리형 */
+.btn-area a,
+.btn-area button{width:100%}
+.btn-area.separate-02 { font-size: 0; }
+.btn-area.separate-02 a,
+.btn-area.separate-02 button { display: inline-block; width: calc(50% - 5px); }
+.btn-area.separate-02 a:nth-child(2n),
+.btn-area.separate-02 button:nth-child(2n) { margin-left: 10px; height: 50px; }
+.btn-area.separate-02.nopd a,
+.btn-area.separate-02.nopd button { margin:0;display: inline-block; width: calc(50%); }
+.btn.btn-mint2{font-size: 17px; color: #222; font-weight:bold; line-height: 50px; text-align: center; background: #9ae5e1; width:100%}
+.btn.btn-primary { font-size: 17px; color: #666; line-height: 50px; text-align: center; background: #ededed; letter-spacing: -0.85px; }
+
+textarea { width: 100%; border-radius: 5px; border: 1px solid #e5e5e5; resize: none; font-family: inherit; color: #222; font-size: 16px; padding: 20px; -webkit-appearance: none; }
+.app-content.schedule .input-label-group .nameWrap input[type="text"]{width:calc(100% - 100px)}
+.input-label-group input { width: 100%; height: 45px; padding: 0px 20px; padding-right: 50px; line-height: 45px; border: 1px solid #e5e5e5; border-radius: 4px; font-size: 15px; color: #222; letter-spacing: -0.15px;outline:none}
+.content { padding: 0 20px; padding-bottom:70px; }
+.app-wrap .default-section {position:relative; margin-top: 20px; }
+.app-content.schedule .fixed-area{position:fixed;bottom:0;padding:0;border-top:0;left:0;right:0;width: auto;}
+.app-content.schedule .fixed-area .btn-area{margin:0}
+.app-content.schedule .btn-area.separate-02.nopd a{font-size: 17px;font-weight: 500;color: #222222;margin:0!important;width:30%}
+.app-content.schedule .btn-area.separate-02.nopd a:last-child{width:70%}
+.app-content.schedule .input-label-group{margin-bottom:15px}
+.app-content.schedule .input-label-group::after{content:'';display:block;clear:both}
+.app-content.schedule .input-label-group .title{width:60px;float:left;  font-size: 13px;  letter-spacing: -0.65px;  font-weight: 500;line-height:35px;text-align:left}
+.app-content.schedule .input-label-group .interval-default{width:calc(100% - 60px);float:left;text-align:left}
+.app-content.schedule .input-label-group input[type="text"], .app-content.schedule .input-label-group input[type="number"],select{border:1px solid #b5b5b5;  letter-spacing: -0.7px;color:#222;line-height:35px;height:35px;border-radius: 18px;	font-size: 14px;padding:0 15px;margin:0}
+.app-content.schedule .input-label-group input[type="text"]::placeholder, .app-content.schedule .input-label-group input[type="number"]::placeholder{letter-spacing: -0.7px;color:#666666;}
+.app-content.schedule .input-label-group input[type="text"]:focus, .app-content.schedule .input-label-group input[type="text"]:active, .app-content.schedule .input-label-group input[type="number"]:focus, .app-content.schedule .input-label-group input[type="number"]:active,textarea:active,textarea:focus{border-color:#00d7cc!important}
+.app-content.schedule .input-label-group select{width:auto;line-height:35px;height:35px;font-size: 14px;border:1px solid #b5b5b5;padding:0 30px 0 11px;background-position:right 10px center}
+.app-content.schedule .input-label-group .btn-color{background:none;padding:0;margin:4px 0 0 0;vertical-align:middle;margin-right:5px;height:28px;line-height:28px;}
+.app-content.schedule .input-label-group .btn-color i{font-size:0;width:24px;height:24px;border-radius:24px;padding:0;margin:0;vertical-align:top}
+.app-content.schedule .input-label-group .nameWrap .textWrap{font-size:18px;font-weight:500;  letter-spacing: -0.9px;margin-top:-3px;margin-right:20px}
+.app-content.schedule .input-label-group .textWrap{line-height:35px;display:inline-block;vertical-align:middle;}
+.app-content.schedule .input-label-group .textWrap + .btn-extraPay{margin-top: 5px;}
+.app-content.schedule .input-label-group .salaryValue{display:inline-block;margin-left:10px}
+.app-content.schedule .input-label-group .ico-extraPay{display:inline-block;border:1px solid #01c5bb;border-radius:10px;padding:0 7px;height:19px;line-height:16px;color:#01c5bb;text-align:center;font-size:10px;    vertical-align: middle;margin-top: -4px;margin-right: 10px;}
+.app-content.schedule .input-label-group .hidden-wrap{position:absolute;top:7px;right:18px;display:inline-block;  color: #959595;	letter-spacing: -0.6px;	font-size: 12px;line-height:20px}
+.app-content.schedule .input-label-group .hidden-wrap .btn-toggle{width:33px;height:20px;margin-right:5px;vertical-align:top;}
+.app-content.schedule .input-label-group .hidden-wrap .btn-toggle input:checked{background:#00c6bc}
+.app-content.schedule .input-label-group .hidden-wrap .btn-toggle label{width:14px;height:14px;top:3px;}
+.app-content.schedule .input-label-group .hidden-wrap .btn-toggle input:checked + label{left:16px}
+.app-content.schedule .input-label-group .hidden-wrap button.btn-notice{top:-8px;margin-left:-2px}
+.app-content.schedule .input-label-group .payValue{text-align:right;padding-right:30px!important;}
+.app-content.schedule .input-label-group .payWrap{position:relative; float:right; width:calc(100% - 81px);display:inline-block}
+.app-content.schedule .input-label-group .payWrap::after{content:'원';position:absolute;top:0;right:13px;line-height:35px;}
+.app-content.schedule .input-label-group .selectPay{float:left;width:auto}
+.app-content.schedule .input-label-group .payWrap + .notice{float:right}
+.app-content.schedule .input-label-group .notice{text-align:right;  letter-spacing: -0.77px;	color: #959595;	font-size: 11px;margin-top:7px;display:inline-block;}
+.app-content.schedule .input-label-group .notice .ico{font-size:13px;font-weight:bold;line-height:0}
+.app-content.schedule .input-label-group #payday{width:calc(50% - 5px)}
+.app-content.schedule .input-label-group [id^="extraPay"]{width:calc(50% - 5px)}
+.app-content.schedule .input-label-group #extraPayWeek{float:right}
+.app-content.schedule input[type=radio]:not(old) + label{  color: #000000;  letter-spacing: -0.7px;	font-size: 14px;}
+.app-content.schedule input[type=radio]:not(old):checked + label:after{background-image:url("../images/radio-not-old-checked-mint.png")}
+.app-content.schedule label[for="option02"] input[type="number"]{width:40px;height:30px;border-radius:4px;padding:0 5px;text-align:right;line-height:30px;margin:0 5px}
+.app-content.schedule label[for="option02"]::after{top:7px}
+.app-content.schedule .extraPayRadio-wrap{margin-top:10px;float:left;width:100%}
+.app-content.schedule .btn-extraPay{margin-top:15px;background:none;  letter-spacing: -0.65px;padding-left:0;font-size: 13px;}
+.app-content.schedule .input-label-group.calWrap .calendar{width:calc(100% - 150px);position:relative}
+.app-content.schedule .input-label-group.calWrap .calendar input[type="text"]{border-radius:4px}
+.app-content.schedule .input-label-group.calWrap .calendar .btn-calendar-add{background-color:#fff;background-size: 19px auto;top: 1px;right: 1px;width: 50px;height: 33px;line-height: 33px;background-color:initial}
+.app-content.schedule .input-label-group.calWrap .calendar .datepicker{  font-size: 15px;  letter-spacing: -0.15px;color:#222;}
+.app-content.schedule .input-button-group .calendar .datepicker:read-only:read-only{border-color:#b5b5b5!important}
+.app-content.schedule textarea{border-color:#b5b5b5;font-size:13px;color:#222;padding:15px;height:80px;outline:none;}
+.app-content.schedule textarea#memo{height:140px}
+.app-content.schedule textarea::placeholder{color:#959595}
+.app-content.schedule .input-label-group select{width: calc(50% - 5px);float:left}
+.app-content.schedule .input-label-group select+select{float:right}
+.app-content.schedule .input-label-group.calWrap .setting-wrap{float:right;}
+.app-content.schedule .input-label-group.calWrap .setting-wrap p.textWrap{display:block}
+.app-content.schedule .input-label-group.calWrap .setting-wrap .calendar{width:calc(45% - -27px);float:right}
+.app-content.schedule .input-label-group.calWrap .setting-wrap .calendar input::placeholder{font-size:13px;color:#222;  letter-spacing: -0.13px;}
+.app-content.schedule  input[type=checkbox]:not(old) + label{font-size:13px;  letter-spacing: -0.91px;}
+.app-content.schedule .input-label-group.calWrap .setting-wrap .textWrap + .week-wrap{margin:0;display:inline-block;vertical-align:middle;margin-left:10px}
+.app-content.schedule .input-label-group.calWrap .setting-wrap .textWrap + .week-wrap input[type=checkbox]:not(old) + label ~ label{margin-left:5px}
+.app-content.schedule .input-label-group.calWrap .setting-wrap .week-wrap{margin:15px 0 10px 0;font-size:0;line-height:0}
+.app-content.schedule .input-label-group.calWrap .setting-wrap .week-wrap input[type=checkbox]:not(old) + label{display:inline-block;padding-left:0;width:26px;height:26px;line-height:26px;text-align:center;border-radius:26px}
+.app-content.schedule .input-label-group.calWrap .setting-wrap .week-wrap input[type=checkbox]:not(old) + label ~ label{margin-left:13px}
+.app-content.schedule .input-label-group.calWrap .setting-wrap .week-wrap input[type=checkbox]:checked + label{background:#9ae5e1;}
+.app-content.schedule .input-label-group.calWrap .setting-wrap .week-wrap input[type=checkbox]:not(old) + label::after{display:none}
+.app-content.schedule input[type=checkbox]:not(old) + label[for="repeat"]{margin-top:8px}
+.app-content.schedule input[type=checkbox]:not(old) + label[for="sat"]{color:#007ac6}
+.app-content.schedule input[type=checkbox]:not(old) + label[for="sun"]{color:#f86253}
+.input-label-group input:active { border: 1px solid #222; outline: 0; opacity: 1; transition: 0.5s; }
+
+
+
+@media all and (max-width: 768px) { 
+	.layer-pop-wrap.default > .layer-pop-inner-wrap{left:20px;right:20px;transform: translate(0,-50%);}
+	.layer-pop-wrap.color > .layer-pop-inner-wrap.on{width: auto;left:30px;right:30px;}
+}
