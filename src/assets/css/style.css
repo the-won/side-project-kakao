@@ -1,483 +1,487 @@
-@charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
-
-@font-face {
-  font-family: "Noto Sans KR";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Noto Sans KR Light"), local("NotoSansKR-Light"),
-    url("../font/noto-sans-kr-v12-latin_korean-300.woff2") format("woff2"),
-    url("../font/noto-sans-kr-v12-latin_korean-300.woff") format("woff");
-}
-@font-face {
-  font-family: "Noto Sans KR";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Noto Sans KR Regular"), local("NotoSansKR-Regular"),
-    url("../font/noto-sans-kr-v12-latin_korean-regular.woff2") format("woff2"),
-    url("../font/noto-sans-kr-v12-latin_korean-regular.woff") format("woff");
-}
-@font-face {
-  font-family: "Noto Sans KR";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Noto Sans KR Medium"), local("NotoSansKR-Medium"),
-    url("../font/noto-sans-kr-v12-latin_korean-500.woff2") format("woff2"),
-    url("../font/noto-sans-kr-v12-latin_korean-500.woff") format("woff");
-}
-@font-face {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Roboto Light"), local("Roboto-Light"),
-    url("../font/roboto-v20-latin-300.woff2") format("woff2"),
-    url("../font/roboto-v20-latin-300.woff") format("woff");
-}
-@font-face {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Roboto"), local("Roboto-Regular"),
-    url("../font/roboto-v20-latin-regular.woff2") format("woff2"),
-    url("../font/roboto-v20-latin-regular.woff") format("woff");
-}
-@font-face {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Roboto Medium"), local("Roboto-Medium"),
-    url("../font/roboto-v20-latin-500.woff2") format("woff2"),
-    url("../font/roboto-v20-latin-500.woff") format("woff");
-}
-@font-face {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Roboto Bold"), local("Roboto-Bold"),
-    url("../font/roboto-v20-latin-700.woff2") format("woff2"),
-    url("../font/roboto-v20-latin-700.woff") format("woff");
-}
-/* reset */
-html,
-body,
-div,
-span,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-abbr,
-address,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-samp,
-small,
-strong,
-sub,
-sup,
-var,
-b,
-i,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: transparent;
-}
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-html,
-body {
-  height: 100%;
-}
-body {
-  font-family: Roboto, Droid Sans, AppleSDGothicNeo, Helvetica, sans-serif;
-  letter-spacing: -0.5px;
-  line-height: 1;
-  color: #000;
-  background: #edeef0;
-}
-body.white {
-  background: #fff;
-}
-li {
-  list-style: none;
-}
-a {
-  text-decoration: none;
-}
-img {
-  vertical-align: middle;
-} /* vertical 속성 초기화 적용 */
-em {
-  font-style: normal;
-}
-button {
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-input,
-textarea,
-select,
-button,
-table {
-  padding: 0;
-}
-input[type="text"],
-input[type="password"],
-input[type="date"],
-input[type="number"],
-input[type="tel"],
-input[type="checkbox"],
-input[type="radio"],
-input[type="button"],
-textarea,
-select {
-  margin: 0;
-  border: 0;
-  border-radius: 0;
-  vertical-align: middle;
-  font-family: Roboto, Droid Sans, AppleSDGothicNeo, Helvetica, sans-serif;
-}
-fieldset,
-button {
-  border: 0;
-}
-img {
-  border: 0;
-  vertical-align: top;
-  width: 100%;
-}
-button {
-  display: inline-block;
-  overflow: hidden;
-  border: 0;
-  background: none;
-  cursor: pointer;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-}
-caption {
-  height: 1px;
-  overflow: hidden;
-  line-height: 0;
-  margin-top: -1px;
-  color: transparent;
-}
-textarea {
-  resize: none;
-  vertical-align: middle;
-}
-iframe {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  border: none;
-  overflow: hidden;
-  visibility: hidden;
-}
-
-/* content */
-.btn-gray { font-size: 17px; color: #666; line-height: 50px; text-align: center; background: #ededed; letter-spacing: -0.85px; }
-
-.btn-primary {
-  font-size: 17px; color: #666; line-height: 50px; text-align: center;  letter-spacing: -0.85px; 
-  border: 1px solid #b488dd !important;
-  background: #b488dd !important;
-}
-.btn-box {
-  margin: 20px 0 10px;
-  text-align: center;
-}
-.btn-enroll {
-  padding: 12px 0;
-  border-radius: 2px;
-  width: 300px;
-  background:rgba(180, 136, 221, 1.1);  /* fallback for old browsers */
-
-  color: #fff;
-}
-.calendar-wrap {
-  padding: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  background: #373c4f;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.calendar-wrap #calendar.cal {
-  padding: 20px 10px;
-  background: #f9f9f9;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  font-family: "Lobster", cursive;
-  margin-bottom: 0;
-}
-.calendar-wrap #calendar.cal:after {
-}
-
-/* boot custom */
-.fc-list-event-title ,
-.fc-h-event ,
-.checkup-wrap .tit{
-  font-weight: 300;
-  font-family: "Noto Sans KR", "NotoSansKR", "mulgun gothic", Dotum, sans-serif;
-}
-.fc .fc-daygrid-week-number {
-  background: rgba(180, 136, 221, 0.1);
-}
-.fc .fc-list-event-dot {
-  background: #b488dd;
-  border-color: #b488dd;
-}
-.fc-h-event {
-  background: #b488dd;
-  border-color: #b488dd;
-  
-}
-.fc .fc-highlight {
-  background: rgba(180, 136, 221, 0.2);
-}
-.fc-direction-ltr .fc-daygrid-week-number {
-  left: auto;
-  right: 0;
-  /* 이부분은 플러그인 속성으로 변경하기 */
-}
-.fc .fc-daygrid-day-top {
-  justify-content: center;
-}
-.fc .fc-daygrid-day.fc-day-today {
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  background: rgba(180, 136, 221, 0.6);
-  color: #fff;
-  font-weight: bold;
-}
-
-.fc a.fc-daygrid-day-number {
-  position: relative;
-  color: #b488dd;
-}
-
-.fc .fc-day-today .fc-daygrid-day-number {
-  color: #fff;
-}
-.fc .fc-day-today .fc-daygrid-day-number:after {
-  position: absolute;
-  bottom: 2px;
-  right: 3px;
-  width: 12px;
-  height: 3px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  background: #fff;
-  content: "";
-}
-.fc .fc-toolbar-title {
-  color: #737c9d;
-}
-
-table.table-bordered,
-.table-bordered thead td,
-.table-bordered thead th {
-  border: none;
-}
-.table-bordered thead th {
-  padding: 30px 0;
-  text-align: center;
-  color: #737e9a;
-}
-.table-bordered tbody td {
-  border: 1px solid #eee;
-}
-/* 안내 */
-.checkup-wrap {
-  position: relative;
-  background: #f9f9f9;
-  border-radius: 10px;
-  padding: 23px 0 20px 75px;
-  max-width: 1100px;
-  margin: 20px auto;
-}
-.checkup-wrap .tit {
-  letter-spacing: -0.65px;
-  font-size: 13px;
-  color: #222;
-  margin-bottom: 0;
-}
-.checkup-wrap .tit b {
-  color: #d71a1a;
-}
-.checkup-wrap .checkup-list {
-  max-width: 300px;
-  margin-top: 7px;
-}
-.checkup-wrap .checkup-list::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.checkup-wrap .checkup-list li {
-  margin-top: 3px;
-  float: left;
-  width: 50%;
-}
-.checkup-wrap .checkup-list .date {
-  margin-left: 10px;
-  letter-spacing: -0.35px;
-  font-size: 14px;
-}
-.checkup-wrap .checkup-list .name {
-  max-width: 50px;
-  margin: 0;
-}
-.checkup-wrap .ico-checkup {
-  position: absolute;
-  top: 19px;
-  width: 67px;
-  left: 0;
-}
-
-/* layer */
-
-/* 하단모달 */
-.layer-pop-wrap.default .layer-pop-inner-wrap{border-radius:15px}
-.layer-pop-wrap.default .m-title{font-size: 20px;font-weight:bold;color:#753a88;border-bottom:0;padding-top:20px;height:auto;line-height:normal}
-.layer-pop-wrap.default .btn-modal-closed{top:26px;height:auto}
-.layer-pop-wrap { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index:1000; width: 100%; height: 100%; overflow: hidden; display: none; }
-.layer-pop-wrap.on { display: block; }
-.dimmed-layer { position: absolute; left: 0; top: 0; width: 100%; height: 100%; transition: .5s; background: transparent; }
-.dimmed-layer.on { background: rgba(0,0,0,0.6); }
-.layer-pop-wrap > .layer-pop-inner-wrap { position: absolute; left: 0; bottom: -100%; width: 100%; max-height: calc(100% - 50px); transition: .5s; overflow-y: hidden; background: #fff; }
-.layer-pop-wrap.color > .layer-pop-inner-wrap{padding: 0 20px 20px 20px; }
-.layer-pop-wrap > .layer-pop-inner-wrap.on { bottom: 0 !important; }
-.layer-pop-inner-wrap.round { border-radius:30px 30px 0 0;padding:0}
-.layer-pop-wrap .m-title { height: 50px; line-height: 50px; border-bottom: 1px solid #e1e1e1; font-size: 17px; letter-spacing: -0.85px; color: #222; text-align: center; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
-.layer-pop-wrap .m-contents { margin-top: 25px; }
-.layer-pop-wrap.color .m-contents { margin-top: 20px; }
-.layer-pop-wrap .btn-modal-closed { position: absolute; top: 17px; right: 20px; width: 18px; height: 17px; }
-.layer-pop-wrap .btn-modal-closed img { width: 100%; display:block}
-.layer-pop-wrap .btn-area,
-.main-wrap .layer-pop-wrap .btn-area { margin-top: 30px; }
-.layer-pop-wrap .btn-modal-closed.txt { position: absolute; top: 30px; right: 30px; width: auto; height: 17px; }
-.layer-pop-wrap .btn-modal-closed.txt img { width: 13px;margin-left:3px; display:inline-block;vertical-align:middle;}
-
-.app-content.sub { padding: 0; max-width:500px;margin:0 auto}
-.app-content .content { padding:0 50px;}
-.app-content.schedule .input-label-group{margin-bottom:15px}
-.app-content.schedule .input-label-group::after{content:'';display:block;clear:both}
-.app-content.schedule .input-label-group input[type="text"], 
-.app-content.schedule .input-label-group input[type="tel"],
-.app-content.schedule .input-label-group select,
-.app-content.schedule .input-label-group textarea{
-  border:1px solid;
-  border-image: linear-gradient(to right, #654ea3 0%, #eaafc8 100%);
-  border-image-slice: 1;border-style: solid;border-image-width: 1px 1px 1px 1px;
-  letter-spacing: -0.7px;color:#222;line-height:35px;height:35px;font-size: 14px;padding:0 15px;margin:0}
-.app-content.schedule .input-label-group .title{width:60px;float:left;  font-size: 13px;  letter-spacing: -0.65px;  font-weight: 500;line-height:35px;text-align:left}
-.app-content.schedule .input-label-group .interval-default{width:calc(100% - 60px);float:left;text-align:left}
-
-.app-content.schedule .input-label-group.calWrap .calendar{position:relative}
-.app-content.schedule .input-label-group.calWrap .calendar .btn-calendar-add{background-color:#fff;background-size: 19px auto;top: 1px;right: 1px;width: 50px;height: 33px;line-height: 33px;background-color:initial}
-.app-content.schedule .input-label-group.calWrap .calendar .datepicker{  font-size: 15px;  letter-spacing: -0.15px;color:#222;}
-
-.layer-pop-wrap.color.default .btn-modal-closed{top:18px}
-.layer-pop-wrap.color.default .btn-modal-closed img{width:15px;display: inline-block;margin-top:8px;}
-.layer-pop-wrap.color.default .m-title{  letter-spacing: -0.4px;	font-size: 16px;text-align:left;padding-top:22px;padding-left:10px}
-.app-content select{background:url('../images/btn-down-arrow.png') center center no-repeat;background-size:9px auto;    -webkit-appearance: none;-moz-appearance: none;appearance: none;}
-
-.app-content.schedule .input-label-group input[type="text"]::placeholder, .app-content.schedule .input-label-group input[type="number"]::placeholder{letter-spacing: -0.7px;color:#666666;}
-.app-content.schedule .input-label-group input[type="text"]:focus, .app-content.schedule .input-label-group input[type="text"]:active, .app-content.schedule .input-label-group input[type="number"]:focus, .app-content.schedule .input-label-group input[type="number"]:active,textarea:active,textarea:focus{border-color:#00d7cc!important}
-.app-content.schedule .input-label-group select{width:auto;line-height:35px;height:35px;font-size: 14px;padding:0 30px 0 11px;background-position:right 10px center}
-.layer-pop-wrap.color.default .content{padding:0}
-.layer-pop-wrap.color.default .content::after{content:'';display:block;clear:both}
-.layer-pop-wrap.default > .layer-pop-inner-wrap{display:none;top:50%;transform:translate(-50%,-50%);left:50%;width:auto;}
-.layer-pop-wrap.default > .layer-pop-inner-wrap.on{bottom: auto !important; display:block;}
-.layer-pop-wrap.color > .layer-pop-inner-wrap.on{width:350px}
-.app-content input[type=radio]:not(old) { margin: 0; padding: 0; opacity: 0; width:0; height: 0; border: 0 ; } 
-
-.btn-calendar-add { position: absolute; top:0; right:0; width: 60px; height: 45px; line-height: 45px; text-align:center; overflow: hidden; text-indent: -999px; border-radius: 0 5px 5px 0; background: #ededed url('../images/icon-calendar.png') no-repeat center center; background-size: 22px 23px; }
-.layer-pop-wrap .btn-area {font-size:0;}
-.layer-pop-wrap .btn-area button {font-size:14px;}
-.layer-pop-wrap .btn-area.separate-02.nopd a{font-size: 16px;line-height:38px; font-weight: 500;color: #222222;margin:0!important;width:30%}
-.layer-pop-wrap .btn-area.separate-02.nopd button:last-child {width:70%; border-color:#753a88 !important; background:#753a88 !important;font-size: 17px; line-height: 38px; text-align: center;  letter-spacing: -0.85px; }
-
-.app-content textarea { width: 100%; border-radius: 5px; resize: none; font-family: inherit; color: #222; font-size: 14px; -webkit-appearance: none; }
-.app-content.schedule textarea#memo{padding:10px; height:140px; font-size:14px;}
-.app-content.schedule textarea::placeholder{color:#959595}
-
-
-@media all and (max-width: 768px) { 
-
-  .app-content.sub {width:100%;}
-  .app-content.schedule .input-label-group input[type="text"], .app-content.schedule .input-label-group input[type="tel"],
-  .app-content.schedule .input-label-group select, .app-content.schedule .input-label-group textarea{width:100%;}
-	.layer-pop-wrap.default > .layer-pop-inner-wrap{left:20px;right:20px;transform: translate(0,-50%);}
-	.layer-pop-wrap.color > .layer-pop-inner-wrap.on{width: auto;left:30px;right:30px;}
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Noto Sans KR Light"), local("NotoSansKR-Light"),
+    url("../font/noto-sans-kr-v12-latin_korean-300.woff2") format("woff2"),
+    url("../font/noto-sans-kr-v12-latin_korean-300.woff") format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Noto Sans KR Regular"), local("NotoSansKR-Regular"),
+    url("../font/noto-sans-kr-v12-latin_korean-regular.woff2") format("woff2"),
+    url("../font/noto-sans-kr-v12-latin_korean-regular.woff") format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Noto Sans KR Medium"), local("NotoSansKR-Medium"),
+    url("../font/noto-sans-kr-v12-latin_korean-500.woff2") format("woff2"),
+    url("../font/noto-sans-kr-v12-latin_korean-500.woff") format("woff");
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Roboto Light"), local("Roboto-Light"),
+    url("../font/roboto-v20-latin-300.woff2") format("woff2"),
+    url("../font/roboto-v20-latin-300.woff") format("woff");
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto"), local("Roboto-Regular"),
+    url("../font/roboto-v20-latin-regular.woff2") format("woff2"),
+    url("../font/roboto-v20-latin-regular.woff") format("woff");
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Roboto Medium"), local("Roboto-Medium"),
+    url("../font/roboto-v20-latin-500.woff2") format("woff2"),
+    url("../font/roboto-v20-latin-500.woff") format("woff");
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Roboto Bold"), local("Roboto-Bold"),
+    url("../font/roboto-v20-latin-700.woff2") format("woff2"),
+    url("../font/roboto-v20-latin-700.woff") format("woff");
+}
+/* reset */
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: Roboto, Droid Sans, AppleSDGothicNeo, Helvetica, sans-serif;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  color: #000;
+  background: #edeef0;
+}
+body.white {
+  background: #fff;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+img {
+  vertical-align: middle;
+} /* vertical 속성 초기화 적용 */
+em {
+  font-style: normal;
+}
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+input,
+textarea,
+select,
+button,
+table {
+  padding: 0;
+}
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="number"],
+input[type="tel"],
+input[type="checkbox"],
+input[type="radio"],
+input[type="button"],
+textarea,
+select {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  vertical-align: middle;
+  font-family: Roboto, Droid Sans, AppleSDGothicNeo, Helvetica, sans-serif;
+}
+fieldset,
+button {
+  border: 0;
+}
+img {
+  border: 0;
+  vertical-align: top;
+  width: 100%;
+}
+button {
+  display: inline-block;
+  overflow: hidden;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+caption {
+  height: 1px;
+  overflow: hidden;
+  line-height: 0;
+  margin-top: -1px;
+  color: transparent;
+}
+textarea {
+  resize: none;
+  vertical-align: middle;
+}
+iframe {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  border: none;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+/* content */
+.btn-gray { font-size: 17px; color: #666; line-height: 50px; text-align: center; background: #ededed; letter-spacing: -0.85px; }
+.btn-primary {
+  font-size: 17px; color: #fff; line-height: 50px; text-align: center;  letter-spacing: -0.85px;border-radius:4px!important;margin:0 3px;
+  border: 1px solid #737c9d !important;
+  background: #737c9d !important;
+}
+.btn-primary.active{background:#373c4f!important}
+.btn-primary:hover{background:#373c4f!important}
+
+.popover-header{background:#373c4f!important;color:#fff!important;}
+
+.btn-box {
+  margin: 20px 0 10px;
+  text-align: center;
+}
+.btn-enroll {
+  padding: 12px 0;
+  border-radius: 4px;
+  width: 300px;
+  background:#858fb4 ;
+  font-weight:bold;
+
+
+  color: #fff;
+}
+.calendar-wrap {
+  padding: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #373c4f;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.calendar-wrap #calendar.cal {
+  padding: 20px 10px;
+  background: #f9f9f9;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin-bottom: 0;
+}
+.calendar-wrap #calendar.cal:after {
+}
+
+.fc .fc-popover-close{margin-right:4px}
+/* boot custom */
+.fc-list-event-title ,
+.fc-h-event ,
+.checkup-wrap .tit{
+  font-weight: 300;
+}
+.fc .fc-daygrid-week-number {
+  background: rgba(180, 136, 221, 0.1);
+}
+.fc .fc-list-event-dot {
+  background: #737c9d;
+  border-color: #737c9d;
+}
+.fc-h-event {
+  background: #737c9d;
+  border-color: #737c9d;
+  
+}
+.fc .fc-highlight {
+  background: rgba(141, 153, 213, 0.2);
+}
+.fc-direction-ltr .fc-daygrid-week-number {
+  left: auto;
+  right: 0;
+  /* 이부분은 플러그인 속성으로 변경하기 */
+}
+.fc .fc-daygrid-day-top {
+  justify-content: center;
+}
+.fc .fc-daygrid-day.fc-day-today {
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background: rgba(141,153,213,0.5);
+  color: #fff;
+  font-weight: bold;
+}
+
+.fc a.fc-daygrid-day-number {
+  position: relative;
+  color: #373c4f;
+}
+
+.fc .fc-day-today .fc-daygrid-day-number {
+  color: #fff;
+}
+.fc .fc-day-today .fc-daygrid-day-number:after {
+  position: absolute;
+  bottom: 2px;
+  right: 5px;
+  width: 12px;
+  height: 3px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background: #fff;
+  content: "";
+}
+.fc .fc-toolbar-title {
+  color: #373c4f;
+  font-weight:bold;
+}
+
+table.table-bordered,
+.table-bordered thead td,
+.table-bordered thead th {
+  border: none;
+}
+.table-bordered thead th {
+  padding: 30px 0;
+  text-align: center;
+  color: #737e9a;
+}
+.table-bordered tbody td {
+  border: 1px solid #eee;
+}
+/* 안내 */
+.checkup-wrap {
+  position: relative;
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 23px 0 20px 75px;
+  max-width: 1100px;
+  margin: 20px auto;
+}
+.checkup-wrap .tit {
+  letter-spacing: -0.65px;
+  font-size: 13px;
+  color: #222;
+  margin-bottom: 0;
+}
+.checkup-wrap .tit b {
+  color: #d71a1a;
+}
+.checkup-wrap .checkup-list {
+  max-width: 300px;
+  margin-top: 7px;
+}
+.checkup-wrap .checkup-list::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.checkup-wrap .checkup-list li {
+  margin-top: 3px;
+  float: left;
+  width: 50%;
+}
+.checkup-wrap .checkup-list .date {
+  margin-left: 10px;
+  letter-spacing: -0.35px;
+  font-size: 14px;
+}
+.checkup-wrap .checkup-list .name {
+  max-width: 50px;
+  margin: 0;
+}
+.checkup-wrap .ico-checkup {
+  position: absolute;
+  top: 19px;
+  width: 67px;
+  left: 0;
+}
+
+/* layer */
+
+/* 하단모달 */
+.layer-pop-wrap.default .layer-pop-inner-wrap{border-radius:15px}
+.layer-pop-wrap.default .m-title{font-size: 20px;font-weight:bold;color:#373c4f;border-bottom:0;padding-top:20px;height:auto;line-height:normal}
+.layer-pop-wrap.default .btn-modal-closed{top:26px;height:auto}
+.layer-pop-wrap { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index:1000; width: 100%; height: 100%; overflow: hidden; display: none; }
+.layer-pop-wrap.on { display: block; }
+.dimmed-layer { position: absolute; left: 0; top: 0; width: 100%; height: 100%; transition: .5s; background: transparent; }
+.dimmed-layer.on { background: rgba(0,0,0,0.6); }
+.layer-pop-wrap > .layer-pop-inner-wrap { position: absolute; left: 0; bottom: -100%; width: 100%; max-height: calc(100% - 50px); transition: .5s; overflow-y: hidden; background: #fff; }
+.layer-pop-wrap.color > .layer-pop-inner-wrap{padding: 0 20px 20px 20px; }
+.layer-pop-wrap > .layer-pop-inner-wrap.on { bottom: 0 !important; }
+.layer-pop-inner-wrap.round { border-radius:30px 30px 0 0;padding:0}
+.layer-pop-wrap .m-title { height: 50px; line-height: 50px; border-bottom: 1px solid #e1e1e1; font-size: 17px; letter-spacing: -0.85px; color: #222; text-align: center; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+.layer-pop-wrap .m-contents { margin-top: 25px; }
+.layer-pop-wrap.color .m-contents { margin-top: 20px; }
+.layer-pop-wrap .btn-modal-closed { position: absolute; top: 17px; right: 20px; width: 18px; height: 17px; }
+.layer-pop-wrap .btn-modal-closed img { width: 100%; display:block}
+.layer-pop-wrap .btn-area,
+.main-wrap .layer-pop-wrap .btn-area { margin-top: 30px; }
+.layer-pop-wrap .btn-modal-closed.txt { position: absolute; top: 30px; right: 30px; width: auto; height: 17px; }
+.layer-pop-wrap .btn-modal-closed.txt img { width: 13px;margin-left:3px; display:inline-block;vertical-align:middle;}
+
+.app-content.sub { padding: 0; max-width:500px;margin:0 auto}
+.app-content .content { padding:0 50px;}
+.app-content.schedule .input-label-group{margin-bottom:15px}
+.app-content.schedule .input-label-group::after{content:'';display:block;clear:both}
+.app-content.schedule .input-label-group input[type="text"], 
+.app-content.schedule .input-label-group input[type="tel"],
+.app-content.schedule .input-label-group select,
+.app-content.schedule .input-label-group textarea{
+  border:1px solid;border:1px solid #373c4f;border-radius:3px;
+  letter-spacing: -0.7px;color:#222;line-height:35px;height:35px;font-size: 14px;padding:0 15px;margin:0}
+.app-content.schedule .input-label-group .title{width:60px;float:left;  font-size: 13px;  letter-spacing: -0.65px;  font-weight: 500;line-height:35px;text-align:left}
+.app-content.schedule .input-label-group .interval-default{width:calc(100% - 60px);float:left;text-align:left}
+
+.app-content.schedule .input-label-group.calWrap .calendar{position:relative}
+.app-content.schedule .input-label-group.calWrap .calendar .btn-calendar-add{background-color:#fff;background-size: 19px auto;top: 1px;right: 1px;width: 50px;height: 33px;line-height: 33px;background-color:initial}
+.app-content.schedule .input-label-group.calWrap .calendar .datepicker{  font-size: 15px;  letter-spacing: -0.15px;color:#222;}
+
+.layer-pop-wrap.color.default .btn-modal-closed{top:18px}
+.layer-pop-wrap.color.default .btn-modal-closed img{width:15px;display: inline-block;margin-top:8px;}
+.layer-pop-wrap.color.default .m-title{  letter-spacing: -0.4px;	font-size: 16px;text-align:left;padding-top:22px;padding-left:10px}
+.app-content select{background:url('../images/btn-down-arrow.png') center center no-repeat;background-size:9px auto;    -webkit-appearance: none;-moz-appearance: none;appearance: none;}
+
+.app-content.schedule .input-label-group input[type="text"]::placeholder, .app-content.schedule .input-label-group input[type="number"]::placeholder{letter-spacing: -0.7px;color:#666666;}
+.app-content.schedule .input-label-group input[type="text"]:focus, .app-content.schedule .input-label-group input[type="text"]:active, .app-content.schedule .input-label-group input[type="number"]:focus, .app-content.schedule .input-label-group input[type="number"]:active,textarea:active,textarea:focus{border-color:#00d7cc!important}
+.app-content.schedule .input-label-group select{border-radius:3px;width:auto;line-height:35px;height:35px;font-size: 14px;padding:0 30px 0 11px;background-position:right 10px center}
+.layer-pop-wrap.color.default .content{padding:0}
+.layer-pop-wrap.color.default .content::after{content:'';display:block;clear:both}
+.layer-pop-wrap.default > .layer-pop-inner-wrap{display:none;top:50%;transform:translate(-50%,-50%);left:50%;width:auto;}
+.layer-pop-wrap.default > .layer-pop-inner-wrap.on{bottom: auto !important; display:block;}
+.layer-pop-wrap.color > .layer-pop-inner-wrap.on{width:350px}
+.app-content input[type=radio]:not(old) { margin: 0; padding: 0; opacity: 0; width:0; height: 0; border: 0 ; } 
+
+.btn-calendar-add { position: absolute; top:0; right:0; width: 60px; height: 45px; line-height: 45px; text-align:center; overflow: hidden; text-indent: -999px; border-radius: 0 5px 5px 0; background: #ededed url('../images/icon-calendar.png') no-repeat center center; background-size: 22px 23px; }
+.layer-pop-wrap .btn-area {font-size:0;}
+.layer-pop-wrap .btn-area button {font-size:14px;}
+.layer-pop-wrap .btn-area.separate-02.nopd a{font-size: 16px;line-height:38px; font-weight: 500;color: #222222;margin:0!important;width:30%}
+.layer-pop-wrap .btn-area.separate-02.nopd button:last-child {margin:0;border-top-left-radius:0!important;border-bottom-left-radius:0!important;width:70%; border-color:#373c4f !important; background:#373c4f !important;font-size: 17px; line-height: 38px; text-align: center;  letter-spacing: -0.85px; }
+
+.app-content textarea { width: 100%; border-radius: 5px; resize: none; font-family: inherit; color: #222; font-size: 14px; -webkit-appearance: none; }
+.app-content.schedule textarea#memo{padding:10px; height:140px; font-size:14px;}
+.app-content.schedule textarea::placeholder{color:#959595}
+
+
+@media all and (max-width: 768px) { 
+
+  .app-content.sub {width:100%;}
+  .app-content.schedule .input-label-group input[type="text"], .app-content.schedule .input-label-group input[type="tel"],
+  .app-content.schedule .input-label-group select, .app-content.schedule .input-label-group textarea{width:100%;}
+	.layer-pop-wrap.default > .layer-pop-inner-wrap{left:20px;right:20px;transform: translate(0,-50%);}
+	.layer-pop-wrap.color > .layer-pop-inner-wrap.on{width: auto;left:30px;right:30px;}
 }
