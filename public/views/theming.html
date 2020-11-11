@@ -8,24 +8,29 @@
 <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 <script src='../assets/js/main.js'></script>
 <script src='../assets/js/theme-chooser.js'></script>
-
+<script src="../assets/js/common.js"></script>
+<style>
+	.fc-daygrid-week-number {display: none;}
+	.fc-event-title-container {cursor: pointer;}
+</style>
 
 <!-- vendor jquery ui -->
 <link rel="stylesheet" href="../assets/css/jquery-ui.min.css" media="screen, print">
 <script src="../assets/js/jquery-ui.min.js"></script>
 
 <script>
-
+	var dataObj;
 
 	var storageUrl = 'https://day-01.firebaseio.com/items2.json';
-	var reqUrl = 'https://day-01.firebaseio.com/items.json?orderBy="$key"&startAt="2019-06"&endAt="2019-07"';
-
+	var reqUrl = 'https://day-01.firebaseio.com/items.json?orderBy="$key"&startAt="2020-06"&endAt="2020-07"';
+	
 	function createCalendar(){
 		$.ajax({
 			url: storageUrl, // 서버에 전달할 파일명
 			type: 'GET', 
 			success: (data, textStatus, jqXHR) => { // 성공시 코드
-				//console.log(data)
+				console.log(data)
+				dataObj = data
 				var items;
 				var calendarEl = document.getElementById('calendar');
 				var calendar;
@@ -49,27 +54,23 @@
 							initialDate: today,
 							weekNumbers: true,
 							navLinks: true, // can click day/week names to navigate views
-							editable: true,
+							editable: false,
 							selectable: true,
 							nowIndicator: true,
 							dayMaxEvents: true, // allow "more" link when too many events
 							// showNonCurrentDates: false,
 							events: items,
+							// droppable: false,
+							// disableDragging: false,
 							dateClick: function(info) {
-								var arr = items.filter((v,i) => v.start === info.dateStr);
-								console.log(arr)
-								if(arr.length > 0){
-									var confirm_test = confirm("카카오 메세지 전송 하시겠습니까?");
- 
-									if ( confirm_test == true ) {
-										alert("준비중...")
-									} else if ( confirm_test == false ) {
-										// 취소(아니오) 버튼 클릭 시 이벤트
-									}
-								}								
+								
 							},
 							eventClick: function(info) {
-								console.log(info.id)
+								var id = info.event._def.publicId;
+								//console.log(id)
+								var title = info.event._def.title
+								//console.log(dataObj[id])
+								layerpopup(dataObj[id])
 							}
 						});
 						calendar.render();
@@ -77,16 +78,63 @@
 
 					change: function(themeSystem) {
 						//calendar.setOption('themeSystem', themeSystem);
-					},
-					eventClick: function(info) {
-						console.log(info)
 					}
+					
 
 				});
 
 
 			}
 		})
+	}
+
+	function layerpopup(res){
+		var memo = res.memo === undefined ? "미작성" : res.memo
+		var markup = `
+			<div class="layer-pop-wrap default on">
+				<div class="dimmed-layer noAction on"></div>
+				<div class="layer-pop-inner-wrap" style="display:block; width:300px; height:330px">
+				<div class="m-title">담당자 상세 정보
+					<a href="javascript:void(0)" class="btn-modal-closed layer-close-button" onclick="closeLayerpop()">
+						<img src="../assets/images/icon-close-03.png" alt="닫기">
+					</a>
+				</div>
+		
+				<!-- 저장 -->				
+				<div class="m-contents">
+					<article class="default-section">
+						<div class="app-content sub schedule">
+
+							<input type="text" value="${res.title}" >
+							<input type="text" value="${res.managerTel}" >
+							<input type="text" value="${res.teamName}" >
+							<input type="text" value="${res.start}" >
+							<input type="text" value="${res.end}" >
+							<textarea>${memo}</textarea>
+							<div class="btn-area separate-02 nopd" style="display:flex">
+								<button type="button" class="btn btn-primary" style="width:50%" onclick="updateMessage()">Send Message</button>
+								<button type="button" class="btn btn-primary" style="width:50%" onclick="updateMessage()">Send Email</button>
+							</div>
+							
+						</div>
+					</article>
+				</div>
+			</div>
+			</div>
+		`;
+		
+		var layerEl = document.createElement('div');
+		layerEl.classList.add('js-layer-wrap')
+		document.body.appendChild(layerEl);
+		layerEl.innerHTML= markup;
+	}
+
+	function updateMessage(){
+		alert("준비중...")
+	}
+
+	function closeLayerpop() {
+		document.querySelector('.js-layer-wrap').remove()
 	}
 	
 	
@@ -169,7 +217,8 @@
 		console.log(serializeObject)
 		if(serializeObject.teamName !== "" && serializeObject.title !== "" && serializeObject.managerTel !== "" && serializeObject.start !== "" && serializeObject.end !== ""){
 			var obj = new Object();
-			
+			var getEndDate = serializeObject.end;
+			console.log(typeof getEndDate)
 			var period =  helperDateFormat.getISOString()
 			obj.id = period;
 			obj.teamName = serializeObject.teamName;
@@ -195,6 +244,7 @@
 				success: function() {
 					console.log('save success'); // 성공시 코드
 					createCalendar()
+					$('.layer-close-button').trigger('click')
 				}
 			});
 		}
@@ -259,6 +309,11 @@
 
 </head>
 <body class="main">
+	<!-- header -->
+	<header>
+		<h1> Push xxx UI <br> <span>[ ict development bu ]</span></h1>
+	</header>
+
 
 	<div id='top' >
 
@@ -307,7 +362,7 @@
 		</div>
 	
 		
-	
+		
 		<div class='clear'></div>
 		</div>
 		<div class="calendar-wrap">

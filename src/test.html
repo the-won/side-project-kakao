@@ -51,11 +51,11 @@
 
 
         var storageUrl = 'https://day-01.firebaseio.com/items2.json';
-        var reqUrl = 'https://day-01.firebaseio.com/items.json?orderBy="$key"&startAt="2019-06"&endAt="2019-07"';
+        var reqUrl = 'https://day-01.firebaseio.com/items2.json?orderBy="$key"&startAt="2020-11-05"&endAt="2020-11-06"';
 
         function loadStorage(){
             $.ajax({
-                url: storageUrl,
+                url: reqUrl,
                 type: 'GET',
                 success: (data, textStatus, jqXHR) => {
                     console.log('load success');
@@ -72,7 +72,7 @@
                 //return [String(key), data[key]]; 
                 return data[key]; 
             }); 
-            console.log(JSON.stringify(result_map))
+            //console.log(JSON.stringify(result_map))
             
 
             // 출력확인
