@@ -66,10 +66,11 @@
 									} else if ( confirm_test == false ) {
 										// 취소(아니오) 버튼 클릭 시 이벤트
 									}
-								}
-
-								
+								}								
 							},
+							eventClick: function(info) {
+								console.log(info.id)
+							}
 						});
 						calendar.render();
 					},
