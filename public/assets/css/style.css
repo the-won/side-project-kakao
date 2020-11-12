@@ -992,3 +992,8 @@ header h1 span {
 	.layer-pop-wrap.color > .layer-pop-inner-wrap.on{width: auto;left:30px;right:30px;}
 
 }
+
+.js-layer-wrap .btn-primary{margin:0;width:33.333333%!important}
+.js-layer-wrap .btn-primary:nth-child(1){border-top-right-radius: 0!important;border-bottom-right-radius:0!important;border-top-left-radius: 0!important;}
+.js-layer-wrap .btn-primary:nth-child(2){border-radius:0!important;border-left:1px solid #fff!important;border-right:1px solid #fff!important}
+.js-layer-wrap .btn-primary:nth-child(3){border-top-right-radius:0!important;}
