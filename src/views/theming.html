@@ -8,23 +8,65 @@
 <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 <script src='../assets/js/main.js'></script>
 <script src='../assets/js/theme-chooser.js'></script>
+<script src="../assets/js/common.js"></script>
+<style>
+	.fc-daygrid-week-number {display: none;}
+	.fc-event-title-container {cursor: pointer;}
+	.load-wrap {
+	    position: absolute;
+	    left: 50%; 
+	    top: 50%;
+	    border-radius: 5px;
+	    text-align: center;
+	    
+	}	
+	.load-wrap p {padding: 0 0 20px;}
+	.ring-1 {
+	    width: 10px;
+	    height: 10px;
+	    margin: 0 auto;
+	    padding: 10px;
+	    border: 7px dashed #373c4f;
+	    border-radius: 100%;
+	}
+	.load-4 .ring-1 {animation: loadingD 1.5s .3s cubic-bezier(.17,.37,.43,.67) infinite;}
+	
+	@keyframes loadingD {
+	    0 {transform: rotate(0deg);}
+	    50% {transform: rotate(180deg);}
+	    100% {transform: rotate(360deg);}
+	}
+	.form-s {
+		margin: 10px;
+	}
+	.form-s > * {
+		background-color: #fff;
+		margin-bottom: 5px;
+	}
+</style>
 
 <!-- vendor jquery ui -->
 <link rel="stylesheet" href="../assets/css/jquery-ui.min.css" media="screen, print">
 <script src="../assets/js/jquery-ui.min.js"></script>
 
 <script>
-
+	var dataObj;
 
 	var storageUrl = 'https://day-01.firebaseio.com/items2.json';
-	var reqUrl = 'https://day-01.firebaseio.com/items.json?orderBy="$key"&startAt="2019-06"&endAt="2019-07"';
-
+	var reqUrl = 'https://day-01.firebaseio.com/items.json?orderBy="$key"&startAt="2020-06"&endAt="2020-07"';
+	
 	function createCalendar(){
 		$.ajax({
 			url: storageUrl, // 서버에 전달할 파일명
-			type: 'GET', 
+			type: 'GET',
+			cache : false,
+			beforeSend: function(){
+				$(".load-wrapp").show();
+			},
 			success: (data, textStatus, jqXHR) => { // 성공시 코드
-				//console.log(data)
+				$(".load-wrap").hide();
+				console.log(data)
+				dataObj = data
 				var items;
 				var calendarEl = document.getElementById('calendar');
 				var calendar;
@@ -48,25 +90,91 @@
 							initialDate: today,
 							weekNumbers: true,
 							navLinks: true, // can click day/week names to navigate views
-							editable: true,
+							editable: false,
 							selectable: true,
 							nowIndicator: true,
 							dayMaxEvents: true, // allow "more" link when too many events
 							// showNonCurrentDates: false,
-							events: items
+							events: items,
+							// droppable: false,
+							// disableDragging: false,
+							dateClick: function(info) {
+								
+							},
+							eventClick: function(info) {
+								var id = info.event._def.publicId;
+								//console.log(id)
+								var title = info.event._def.title
+								//console.log(dataObj[id])
+								layerpopup(dataObj[id])
+							}
 						});
 						calendar.render();
 					},
 
 					change: function(themeSystem) {
-						calendar.setOption('themeSystem', themeSystem);
+						//calendar.setOption('themeSystem', themeSystem);
 					}
+					
 
 				});
 
 
 			}
 		})
+	}
+	var targetId; 
+	function layerpopup(res){
+		var memo = res.memo === undefined ? "미작성" : res.memo
+		targetId = res.id;
+		var markup = `
+			<div class="layer-pop-wrap default on">
+				<div class="dimmed-layer noAction on"></div>
+				<div class="layer-pop-inner-wrap" style="display:block; width:300px; height:330px">
+				<div class="m-title">담당자 상세 정보
+					<a href="javascript:void(0)" class="btn-modal-closed layer-close-button" onclick="closeLayerpop()">
+						<img src="../assets/images/icon-close-03.png" alt="닫기">
+					</a>
+				</div>
+		
+				<!-- 저장 -->				
+				<div class="m-contents">
+					<article class="default-section">
+						<div class="app-content sub schedule">
+
+							<div class="form-s">
+								<input type="text" disabled value="${res.title}" >
+								<input type="text" disabled value="${res.managerTel}" >
+								<input type="text" disabled value="${res.teamName}" >
+								<input type="text" disabled value="${res.start}" >
+								<input type="text" disabled value="${res.end}" >
+								<textarea disabled>${memo}</textarea>
+							</div>
+							<div class="btn-area separate-02 nopd" style="display:flex">
+								<button type="button" class="btn btn-primary" style="width:33%" onclick="updateMessage()">Send Message</button>
+								<button type="button" class="btn btn-primary" style="width:33%" onclick="updateMessage()">Send Email</button>
+								<button type="button" class="btn btn-primary" style="width:33%" onclick="removeItem()">delete</button>
+							</div>
+							
+						</div>
+					</article>
+				</div>
+			</div>
+			</div>
+		`;
+		
+		var layerEl = document.createElement('div');
+		layerEl.classList.add('js-layer-wrap')
+		document.body.appendChild(layerEl);
+		layerEl.innerHTML= markup;
+	}
+
+	function updateMessage(){
+		alert("준비중...")
+	}
+
+	function closeLayerpop() {
+		document.querySelector('.js-layer-wrap').remove()
 	}
 	
 	
@@ -141,36 +249,63 @@
 		return result
 	}
 
-
+	
 
 	function updateItem(){
 		
 		var serializeObject = $('#form1').serializeObject();
 		console.log(serializeObject)
-		var obj = new Object();
+		if(serializeObject.teamName !== "" && serializeObject.title !== "" && serializeObject.managerTel !== "" && serializeObject.start !== "" && serializeObject.end !== ""){
+			var obj = new Object();
+			var getEndDate = serializeObject.end;
+			console.log(typeof getEndDate)
+			var period =  helperDateFormat.getISOString()
+			obj.id = period;
+			obj.teamName = serializeObject.teamName;
+			obj.title = serializeObject.title;
+			obj.managerTel = serializeObject.managerTel;
+			obj.start = serializeObject.start;
+			obj.end = serializeObject.end;
+			obj.memo = serializeObject.memo;
 
-		var period =  helperDateFormat.getISOString()
-		obj.id = period;
-		obj.teamName = serializeObject.teamName;
-		obj.title = serializeObject.title;
-		obj.managerTel = serializeObject.managerTel;
-		obj.start = serializeObject.start;
-		obj.end = serializeObject.end;
-		obj.memo = serializeObject.memo
+			
 
-		var newData = JSON.stringify(obj);
+			
+			var newData = JSON.stringify(obj);
 
+			$.ajax({
+				url: `https://day-01.firebaseio.com/items2/${obj.id}.json`, // 서버에 전달할 파일명
+				dataType: 'text',
+				cache : false,
+				processData: false,
+			    contentType: false,
+				type: 'PUT',
+				data: newData,
+				success: function() {
+					console.log('save success'); // 성공시 코드
+					createCalendar()
+					$('.layer-close-button').trigger('click')
+				}
+			});
+		}
+		
+	}
+
+	function removeItem(res){
+
+		
 		$.ajax({
-			url: `https://day-01.firebaseio.com/items2/${obj.id}.json`, // 서버에 전달할 파일명
+			url: `https://day-01.firebaseio.com/items2/${targetId}.json`, // 서버에 전달할 파일명
 			dataType: 'text',
 			cache : false,
 			processData: false,
-            contentType: false,
-			type: 'PUT',
-			data: newData,
+			contentType: false,
+			type: 'DELETE',
 			success: function() {
-				console.log('save success'); // 성공시 코드
+				console.log('delete success'); // 성공시 코드
 				createCalendar()
+				closeLayerpop()
+				
 			}
 		});
 	}
@@ -179,7 +314,7 @@
 
 	document.addEventListener('DOMContentLoaded', function() {
 		createCalendar();
-
+		
 	});
 
 
@@ -228,15 +363,22 @@
 	  margin: 40px auto;
 	  padding: 0 10px;
 	}
-  
+	.ui-datepicker .ui-datepicker-title select {
+		padding: 0 10px 0 10px;
+	}
   </style>
 
 </head>
 <body class="main">
+	<!-- header -->
+	<header>
+		<h1> 담당자 Push 알림 서비스 <br> <span>[ ict development bu ]</span></h1>
+	</header>
 
-	<div id='top'>
 
-		<div class='left'>
+	<div id='top' >
+
+		<div class='left' style="display: none;">
 	
 			<div id='theme-system-selector' class='selector'>
 			Theme System:
@@ -280,15 +422,8 @@
 	
 		</div>
 	
-		<div class='right'>
-			<span class='credits' data-credit-id='bootstrap-standard' style='display:none'>
-			<a href='https://getbootstrap.com/docs/3.3/' target='_blank'>Theme by Bootstrap</a>
-			</span>
-			<span class='credits' data-credit-id='bootstrap-custom' style='display:none'>
-			<a href='https://bootswatch.com/' target='_blank'>Theme by Bootswatch</a>
-			</span>
-		</div>
-	
+		
+		
 		<div class='clear'></div>
 		</div>
 		<div class="calendar-wrap">
@@ -317,12 +452,13 @@
 				<div class="m-contents">
 					<article class="default-section">
 						<div class="app-content sub schedule">
-							<form id="form1" name="form1" method="post">
+
+							<form id="form1" name="form1" method="post" class="sendForm">
 								<div class="content">
 									<div class="input-label-group">
 										<label class="title" for="team">팀명</label>
 										<div class="interval-default">
-											<select name="teamName" id="">
+											<select name="teamName" id="teamName">
 												<option value="ICT개발1팀">ICT개발1팀</option>
 												<option value="ICT개발2팀">ICT개발2팀</option>
 												<option value="ICT개발3팀">ICT개발3팀</option>
@@ -340,9 +476,9 @@
 									</div>
 				
 									<div class="input-label-group">
-										<label class="title" for="tel">휴대폰</label>
+										<label class="title" for="managerTel">휴대폰</label>
 										<div class="interval-default">									
-											<input type="tel" pattern="[0-9]*" id="tel" name="managerTel" placeholder="숫자만 입력하세요">
+											<input type="tel" pattern="[0-9]*" id="managerTel" name="managerTel" placeholder="숫자만 입력하세요">
 										</div>
 									</div>
 				
@@ -369,13 +505,15 @@
 										</div>
 									</div>
 								</div>
-							</form>
-							<div class="fixed-area">
-								<div class="btn-area separate-02 nopd">
-									<a href="javascript:void(0);" class="btn btn-gray" id="btnCancel">삭제</a>							
-									<button type="button" id="saveBtn" class="btn btn-primary" onclick="updateItem(); return false;">save</button>
+							
+
+								<div class="fixed-area">
+									<div class="btn-area separate-02 nopd">
+										<a href="javascript:void(0);" class="btn btn-gray" id="btnCancel">삭제</a>							
+										<button type="button" id="saveBtn" class="btn btn-primary" onclick="updateItem(); return false;">save</button>
+									</div>
 								</div>
-							</div>
+							</form>
 						</div>
 					</article>
 				</div>
@@ -390,29 +528,29 @@
 		$(document).ready(function () {
 
 			//datepicker
-			// if ( $('.datepicker').length > 0 )	
-			// {
-			// 	$(function datePicker() {
-			// 		$(".datepicker").datepicker({
-			// 			prevText: '이전 달',
-			// 			nextText: '다음 달',
-			// 			monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-			// 			monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-			// 			dayNames: ['일','월','화','수','목','금','토'],
-			// 			dayNamesShort: ['일','월','화','수','목','금','토'],
-			// 			dayNamesMin: ['일','월','화','수','목','금','토'],
-			// 			dateFormat: 'yy.mm.dd',
-			// 			showMonthAfterYear: true,
-			// 			changeMonth: true,
-			// 			changeYear: true,
-			// 			pos: {zIndex: 5020},
-			// 			minDate : 1
-			// 		});
-			// 		$(document).on('click', '.btn-calendar-add', function(){
-			// 			$(this).prev('input').focus();
-			// 		});
-			// 	});
-			// }
+			if ( $('.datepicker').length > 0 )	
+			{
+				$(function datePicker() {
+					$(".datepicker").datepicker({
+						prevText: '이전 달',
+						nextText: '다음 달',
+						monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+						monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+						dayNames: ['일','월','화','수','목','금','토'],
+						dayNamesShort: ['일','월','화','수','목','금','토'],
+						dayNamesMin: ['일','월','화','수','목','금','토'],
+						dateFormat: 'yy-mm-dd',
+						showMonthAfterYear: true,
+						changeMonth: true,
+						changeYear: true,
+						pos: {zIndex: 5020},
+						minDate : 1
+					});
+					$(document).on('click', '.btn-calendar-add', function(){
+						$(this).prev('input').focus();
+					});
+				});
+			}
 
 				
 			// Layer Popup 활성화
@@ -455,6 +593,15 @@
 			});
 		});
 	</script>
+
+
+
+	<div class="load-wrap">
+		<div class="load-4">
+			<div class="ring-1"></div>
+		</div>
+	</div>
+
 </body>
 
 </html>
